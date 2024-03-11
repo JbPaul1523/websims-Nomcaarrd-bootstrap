@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +24,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+
+Route::get('/employee', [EmployeeController::class,'index'])->name('employees');
+Route::get('/employee/create',[EmployeeController::class, 'create'])->name('employee.create');
+Route::post('/employee',[EmployeeController::class,'store'])->name('employee.store');

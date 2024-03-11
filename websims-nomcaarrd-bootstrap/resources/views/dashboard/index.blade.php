@@ -11,7 +11,7 @@
                     <div class="inner">
                         {{-- This h3 is for number of data in the table --}}
                         <h3>
-                            {{-- {{$userCount}} --}}
+                            {{$userCount}}
                         </h3>
                         <p>Total Users</p>
                     </div>
@@ -34,7 +34,7 @@
                     <div class="icon">
                         <i class="fa fa-users"></i>
                     </div>
-                    <a href="#" class="small-box-footer">View <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{route('employees')}}" class="small-box-footer">View <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
 
