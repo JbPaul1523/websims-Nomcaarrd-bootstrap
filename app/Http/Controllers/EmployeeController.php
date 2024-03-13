@@ -11,10 +11,10 @@ class EmployeeController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-{
-    $employees = Employee::all(); // Use the correct model name
-    return view('user-management.employee.index', ['employees' => $employees]);
-}
+    {
+        $employees = Employee::all(); // Use the correct model name
+        return view('user-management.employee.index', ['employees' => $employees]);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -32,7 +32,7 @@ class EmployeeController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'position' => 'nullable|string|max:255',
+            'position' => 'required|string|max:255',
         ]);
 
         $employee = new Employee();
@@ -58,7 +58,7 @@ class EmployeeController extends Controller
     public function edit($id)
     {
         $employee = Employee::findOrFail($id);
-        return view('user-management.employee.edit', ['employee' => $employee]);
+        return view('user-management.employee.edit', compact('employee'));
     }
 
     /**
@@ -67,16 +67,18 @@ class EmployeeController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'emp_name' => 'required|string|max:255',
-            'position' => 'nullable|string|max:255',
+            'name' => 'required|string|max:255',
+            'position' => 'required|string|max:255',
         ]);
 
         $employee = Employee::findOrFail($id);
-        $employee->emp_name = $request->emp_name;
-        $employee->position = $request->position;
-        $employee->save();
+        $employee->update($request->all());
+        // $employee->name = $request->input('name');
+        // $employee->position = $request->input('position');
+        // $employee->save();
 
-        return redirect()->route('employee.index')->with('success', 'Employee updated successfully.');
+
+        return redirect()->route('employees', compact('employee'))->with('success', 'Employee updated successfully.');
     }
 
     /**
@@ -87,6 +89,6 @@ class EmployeeController extends Controller
         $employee = Employee::findOrFail($id);
         $employee->delete();
 
-        return redirect()->route('employee.index')->with('success', 'Employee deleted successfully.');
+        return redirect()->route('employees')->with('success', 'Item deleted successfully');
     }
 }

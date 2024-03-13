@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Employee;
 
 class HomeController extends Controller
 {
@@ -25,6 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $userCount = User::count();
-        return view('dashboard.index', ['userCount' => $userCount]);
+        $employeeCount = Employee::count();
+        return view('dashboard.index', compact('userCount','employeeCount'));
     }
 }

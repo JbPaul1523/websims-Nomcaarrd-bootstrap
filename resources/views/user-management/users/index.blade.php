@@ -2,7 +2,7 @@
 @section('pagetitle', 'Users')
 
 @section('mainbody')
-    <div class="container">
+    <div class="container container-fluid">
         <div class="row">
             <div class="col-md-12 col-md-offset-1">
                 <table class="table table-bordered table-responsive table-striped">
@@ -17,20 +17,19 @@
                             <tr>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
-
                                 <td>
                                     {{-- This is the button for users edit and delete --}}
                                     <a href="#edit{{ $user->id }}" data-bs-toggle="modal" class="btn btn-success"><i
                                             class='fa fa-edit'></i> Edit</a>
+                                    @include('user-management.users.edit')
                                     <a href="#delete{{ $user->id }}" data-bs-toggle="modal" class="btn btn-danger"><i
                                             class='fa fa-trash'></i> Delete</a>
-                                    {{-- @include('websims-page.user_management.action') --}}
-
+                                    @include('user-management.users.delete')
                                 </td>
                             </tr>
                         @endforeach
 
-                        @if (session('success'))
+                        {{-- @if (session('success'))
                             <div class="alert alert-success">
                                 {{ session('success') }}
                             </div>
@@ -40,7 +39,7 @@
                             <div class="alert alert-danger">
                                 {{ session('error') }}
                             </div>
-                        @endif
+                        @endif --}}
                     </tbody>
                 </table>
             </div>

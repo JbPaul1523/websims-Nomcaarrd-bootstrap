@@ -10,36 +10,7 @@
             </button>
 
             <!-- Modal for adding new employee -->
-            <div class="modal fade" id="addEmployeeModal" tabindex="-1" aria-labelledby="addEmployeeModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="addEmployeeModalLabel">Add New Employee</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form method="POST" action="{{ route('employee.store') }}">
-                                @csrf
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>Name:</label>
-                                        <input type="text" class="form-control" name="name">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label>Position:</label>
-                                        <input type="text" class="form-control" name="position">
-                                    </div>
-                                </div>
-                                <div class="row mt-3">
-                                    <div class="col-md-12">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           @include('user-management.employee.create')
 
             <!-- Employee list -->
             <div class="col-md-12 col-md-offset-1">
@@ -47,16 +18,39 @@
                     <thead>
                         <th>Name</th>
                         <th>Position</th>
+                        <th>Action</th>
                     </thead>
                     <tbody>
                         @foreach ($employees as $employee)
                             <tr>
                                 <td>{{ $employee->name }}</td>
                                 <td>{{ $employee->position }}</td>
+                                <td>
+                                    {{-- This is the button for users edit and delete --}}
+                                    <a href="#edit{{ $employee->id }}" data-bs-toggle="modal" class="btn btn-success"><i
+                                            class='fa fa-edit'></i> Edit</a>
+                                    <a href="#delete{{ $employee->id }}" data-bs-toggle="modal" class="btn btn-danger"><i
+                                            class='fa fa-trash'></i> Delete</a>
+                                    @include('user-management.employee.delete')
+                                    @include('user-management.employee.edit')
+                                </td>
                             </tr>
                         @endforeach
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
+                        @if (session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
                     </tbody>
+
                 </table>
+
             </div>
         </div>
     </div>

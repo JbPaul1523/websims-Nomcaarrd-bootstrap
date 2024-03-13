@@ -18,7 +18,7 @@
                     <div class="icon">
                         <i class="fa fa-user-circle"></i>
                     </div>
-                    <a href="#" class="small-box-footer">View <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{route('users')}}" class="small-box-footer">View <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             {{-- This box is for Total numbers of Employee --}}
@@ -27,7 +27,7 @@
                     <div class="inner">
                         {{-- This h3 is for number of data in the table --}}
                         <h3>
-                            {{-- {{$employeeCount}} --}}
+                            {{$employeeCount}}
                         </h3>
                         <p>Total Employee</p>
                     </div>
