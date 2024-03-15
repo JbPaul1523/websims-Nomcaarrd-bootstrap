@@ -136,7 +136,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./index2.html" class="nav-link">
+                                    <a href="{{route('supplies')}}" class="nav-link">
                                         <i class="far nav-icon"></i>
                                         <p>SUPPLIES</p>
                                     </a>

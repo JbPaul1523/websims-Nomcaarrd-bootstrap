@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AssetsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,8 @@ Auth::routes();
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 
+// This ROutes will update in the thoughout the project :)
+
 //route for Employee
 Route::get('/employee', [EmployeeController::class, 'index'])->name('employees');
 Route::get('/employee/create', [EmployeeController::class, 'create'])->name('employee.create');
@@ -36,14 +39,25 @@ Route::get('/employee/{id}/edit', [EmployeeController::class, 'edit'])->name('em
 Route::put('/employee/{id}/update', [EmployeeController::class, 'update'])->name('employee.update');
 // Route::resource('employees', 'EmployeeController');
 
-Route::get('/users',[UserController::class, 'index'])->name('users');
+// Users CRUD route
+Route::get('/user',[UserController::class, 'index'])->name('users');
 Route::get('/employee/create', [UserController::class, 'create'])->name('users.create');
 Route::post('/users', [UserController::class, 'store'])->name('users.store');
 Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 
-Route::get('/equipments',[EquipmentController::class, 'index'])->name('equipments');
+// Equipments CRUD Route
+Route::get('/equipment',[EquipmentController::class, 'index'])->name('equipments');
 Route::get('/equipment/create', [EquipmentController::class, 'create'])->name('equipment.create');
 Route::post('/equipment',[EquipmentController::class, 'store'])-> name ('equipment.store');
 Route::put('/equipment/{id}/update',[EquipmentController::class, 'update'])->name('equipment.update');
 Route::get('/equipment/{id}/update',[EquipmentController::class, 'edit'])->name('equipment.edit');
 Route::delete('/equipment/{id}', [EquipmentController::class, 'destroy'])->name('equipment.destroy');
+
+
+// Supplies CRUD Route
+Route::get('/supply',[AssetsController::class, 'index'])->name('supplies');
+Route::get('/supply/create', [AssetsController::class, 'create'])->name('supply.create');
+Route::post('/supply',[AssetsController::class, 'store'])-> name ('supply.store');
+Route::put('/supply/{id}/update',[AssetsController::class, 'update'])->name('supply.update');
+Route::get('/supply/{id}/update',[AssetsController::class, 'edit'])->name('supply.edit');
+Route::delete('/supply/{id}', [AssetsController::class, 'destroy'])->name('supply.destroy');

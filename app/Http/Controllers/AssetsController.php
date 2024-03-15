@@ -12,7 +12,8 @@ class AssetsController extends Controller
      */
     public function index()
     {
-        //
+        $assets = Assets::all();
+        return view('items.supplies.index', compact('assets'));
     }
 
     /**
@@ -20,7 +21,7 @@ class AssetsController extends Controller
      */
     public function create()
     {
-        //
+        return view('items.supplies.create');
     }
 
     /**
@@ -28,7 +29,19 @@ class AssetsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'description' => 'nullable|string',
+                'amount' => 'required|numeric|min:0', // Assuming amount cannot be negative
+                'stock' => 'required|integer|min:0', // Assuming stock cannot be negative
+                'date_acquired' => 'required|date',
+            ]);
+
+            Assets::create($request->all());
+
+            return redirect()->route('supplies')->with('success', 'Asset added successfully');
+
     }
 
     /**
@@ -42,24 +55,39 @@ class AssetsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Assets $assets)
+    public function edit($id)
     {
-        //
+        $assets = Assets::findOrFail($id);
+        return view('items.supplies.index', compact('assets'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Assets $assets)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'amount' => 'required|numeric|min:0', // Assuming amount cannot be negative
+            'stock' => 'required|integer|min:0', // Assuming stock cannot be negative
+            'date_acquired' => 'required|date',
+        ]);
+
+        $assets = Assets::findOrFail($id);
+        $assets->update($request->all());
+
+        return redirect()->route('supplies')->with('success', 'Asset Updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Assets $assets)
+    public function destroy($id)
     {
-        //
+        $assets = Assets::findOrFail($id);
+        $assets->delete();
+
+        return redirect(route('supplies'))->with('success', 'Item deleted successfully');
     }
 }

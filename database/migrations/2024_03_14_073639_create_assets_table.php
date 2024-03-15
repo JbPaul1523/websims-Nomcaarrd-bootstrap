@@ -9,14 +9,18 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('assets', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->decimal('amount', 10, 2)->default(0); // Using decimal for precise currency amounts
+            $table->integer('stock')->default(0); // Assuming stock is an integer
+            $table->date('date_acquired'); // Corrected 'date_aquired' to 'date_acquired'
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */
