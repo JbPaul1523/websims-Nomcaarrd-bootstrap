@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EquipmentController;
 use App\Http\Controllers\HomeController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +27,7 @@ Auth::routes();
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 
+//route for Employee
 Route::get('/employee', [EmployeeController::class, 'index'])->name('employees');
 Route::get('/employee/create', [EmployeeController::class, 'create'])->name('employee.create');
 Route::post('/employee', [EmployeeController::class, 'store'])->name('employee.store');
@@ -38,3 +40,10 @@ Route::get('/users',[UserController::class, 'index'])->name('users');
 Route::get('/employee/create', [UserController::class, 'create'])->name('users.create');
 Route::post('/users', [UserController::class, 'store'])->name('users.store');
 Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+
+Route::get('/equipments',[EquipmentController::class, 'index'])->name('equipments');
+Route::get('/equipment/create', [EquipmentController::class, 'create'])->name('equipment.create');
+Route::post('/equipment',[EquipmentController::class, 'store'])-> name ('equipment.store');
+Route::put('/equipment/{id}/update',[EquipmentController::class, 'update'])->name('equipment.update');
+Route::get('/equipment/{id}/update',[EquipmentController::class, 'edit'])->name('equipment.edit');
+Route::delete('/equipment/{id}', [EquipmentController::class, 'destroy'])->name('equipment.destroy');

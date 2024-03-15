@@ -23,7 +23,7 @@
             </div>
             {{-- This box is for Total numbers of Employee --}}
             <div class="col-lg-3 col-6">
-                <div class="small-box bg-info">
+                <div class="small-box bg-danger">
                     <div class="inner">
                         {{-- This h3 is for number of data in the table --}}
                         <h3>
@@ -42,8 +42,8 @@
                 <div class="small-box bg-success">
                     <div class="inner">
                         {{-- This h3 is for number of data in the table --}}
-                        <h3>2</h3>
-                        <p>Total Categories</p>
+                        <h3>{{$equipmentCount}}</h3>
+                        <p>Total Equipment</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-list-alt"></i>

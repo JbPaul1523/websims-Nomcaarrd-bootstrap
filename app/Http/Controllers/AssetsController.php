@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Assets;
 use Illuminate\Http\Request;
-use App\Models\User;
 
-class UserController extends Controller
+class AssetsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $users = User::all();
-        return view('user-management.users.index', compact('users'));
+        //
     }
 
     /**
@@ -22,7 +21,6 @@ class UserController extends Controller
     public function create()
     {
         //
-        return  view('user-management.users.create');
     }
 
     /**
@@ -30,13 +28,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-
+        //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Assets $assets)
     {
         //
     }
@@ -44,7 +42,7 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Assets $assets)
     {
         //
     }
@@ -52,7 +50,7 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Assets $assets)
     {
         //
     }
@@ -60,7 +58,7 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Assets $assets)
     {
         //
     }

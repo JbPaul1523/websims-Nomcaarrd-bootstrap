@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Employee;
+use App\Models\Equipment;
 
 class HomeController extends Controller
 {
@@ -27,6 +28,7 @@ class HomeController extends Controller
     {
         $userCount = User::count();
         $employeeCount = Employee::count();
-        return view('dashboard.index', compact('userCount','employeeCount'));
+        $equipmentCount = Equipment::count();
+        return view('dashboard.index', compact('userCount','employeeCount', 'equipmentCount'));
     }
 }
