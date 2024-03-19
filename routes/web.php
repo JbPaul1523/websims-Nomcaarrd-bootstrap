@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AssetsController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,3 +62,10 @@ Route::post('/supply',[AssetsController::class, 'store'])-> name ('supply.store'
 Route::put('/supply/{id}/update',[AssetsController::class, 'update'])->name('supply.update');
 Route::get('/supply/{id}/update',[AssetsController::class, 'edit'])->name('supply.edit');
 Route::delete('/supply/{id}', [AssetsController::class, 'destroy'])->name('supply.destroy');
+
+Route::get('/category', [CategoryController::class, 'index'])->name('categories');
+Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
+Route::post('/category',[CategoryController::class, 'store'])-> name ('category.store');
+Route::put('/category/{id}/update',[CategoryController::class, 'update'])->name('category.update');
+Route::get('/category/{id}/update',[CategoryController::class, 'edit'])->name('category.edit');
+Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');

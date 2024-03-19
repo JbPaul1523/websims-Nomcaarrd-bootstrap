@@ -141,6 +141,12 @@
                                         <p>SUPPLIES</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{route('categories')}}" class="nav-link">
+                                        <i class="far nav-icon"></i>
+                                        <p>CATEGORY</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
 
