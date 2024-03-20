@@ -12,4 +12,9 @@ class Employee extends Model
         'name',
         'position'
     ];
+    public function equipment()
+    {
+        return $this->hasMany(Equipment::class, 'employees_id');
+    }
+
 }

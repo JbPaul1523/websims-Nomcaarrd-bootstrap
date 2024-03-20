@@ -5,10 +5,11 @@
                 <h5 class="modal-title" id="myModalLabel">Edit Equipment Details</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form method="POST" action="{{ route('equipment.update', $equipment->id) }}">
-                @csrf
-                @method('PUT')
-                <div class="row">
+            <div class="modal-body">
+                <form method="POST" action="{{ route('equipment.update', $equipment->id) }}">
+                    @csrf
+                    @method('PUT')
+                    <div class="row">
                         <div class="col-md-6">
                             <label>Name:</label>
                             <input type="text" class="form-control" name="name" required>
@@ -32,19 +33,31 @@
                         <div class="col-md-6">
                             <label>Condition:</label>
                             <select class="form-control" name="condition" required>
-                                @foreach(\App\Models\Equipment::getConditionOptions() as $value => $label)
+                                @foreach (\App\Models\Equipment::getConditionOptions() as $value => $label)
                                     <option value="{{ $value }}">{{ $label }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Assigned to:</label>
+                            <select name="employees_id" class="form-control" required>
+                                <option value="">Select an Employee</option>
+                                @foreach ($employees as $employee)
+                                    <option value="{{ $employee->id }}">{{ $employee->name }}</option>
                                 @endforeach
                             </select>
                         </div>
 
                     </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fa fa-times"></i>
-                        Cancel</button>
-                    <button type="submit" class="btn btn-success"><i class="fa fa-check-square-o"></i> Update</button>
-                </div>
-            </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i
+                                class="fa fa-times"></i>
+                            Cancel</button>
+                        <button type="submit" class="btn btn-success"><i class="fa fa-check-square-o"></i>
+                            Update</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

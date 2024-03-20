@@ -37,6 +37,24 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="col-md-6">
+                            <label>Assigned to:</label>
+                            <select name="employees_id" class="form-control" required>
+                                <option value="">Select an Employee</option>
+                                @foreach ($employees as $employee)
+                                    <option value="{{ $employee->id }}">{{ $employee->name }}</option>
+                                @endforeach
+                            </select >
+                        </div>
+                        <div class="col-md-6">
+                            <label>Assigned to Category:</label>
+                            <select name="categories_id" class="form-control" required>
+                                <option value="">Select a Category</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
+                            </select >
+                        </div>
 
                     </div>
                     <div class="row mt-3">

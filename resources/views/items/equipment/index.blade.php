@@ -22,6 +22,8 @@
                         <th>Serial Number</th>
                         <th>Date Aquired</th>
                         <th>Condition</th>
+                        <th>Category</th>
+                        <th>Assigned to:</th>
                         <th>Action</th>
                     </thead>
                     <tbody>
@@ -33,6 +35,28 @@
                                 <td>{{ $equipment->serial_number }}</td>
                                 <td>{{ $equipment->date_acquired }}</td>
                                 <td>{{ $equipment->condition }}</td>
+                                <td>@if ($equipment->categories_id)
+                                    @foreach ($categories as $category)
+                                        @if ($category->id === $equipment->categories_id)
+                                            {{ $category->name }}
+                                            @break
+                                        @endif
+                                    @endforeach
+                                @else
+                                    N/A
+                                @endif</td>
+                                <td>
+                                    @if ($equipment->employees_id)
+                                        @foreach ($employees as $employee)
+                                            @if ($employee->id === $equipment->employees_id)
+                                                {{ $employee->name }}
+                                                @break
+                                            @endif
+                                        @endforeach
+                                    @else
+                                        N/A
+                                    @endif
+                                </td> <!-- Display employee name -->
                                 <td>
                                     {{-- This is the button for users edit and delete --}}
                                     <a href="#edit{{ $equipment->id }}" data-bs-toggle="modal" class="btn btn-success"><i

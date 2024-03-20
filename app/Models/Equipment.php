@@ -18,6 +18,8 @@ class Equipment extends Model
         'amount',
         'description',
         'date_acquired',
+        'employees_id',
+        'categories_id'
     ];
 
     public static function getConditionOptions()
@@ -26,6 +28,15 @@ class Equipment extends Model
             'good'=> 'Good',
             'condemned' => 'Condemned',
         ];
+    }
+
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class);
+    }
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }
 

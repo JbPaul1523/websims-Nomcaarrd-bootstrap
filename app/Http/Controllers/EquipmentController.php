@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Equipment;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -16,7 +18,10 @@ class EquipmentController extends Controller
     public function index()
     {
         $equipments = Equipment::all();
-        return view(' items.equipment.index', compact('equipments'));
+        $employees = Employee::all();
+        $categories = Category::all();
+
+        return view(' items.equipment.index', compact('equipments','employees', 'categories'));
     }
 
     /**
@@ -24,7 +29,8 @@ class EquipmentController extends Controller
      */
     public function create()
     {
-        return view('items.equipment.create');
+        $employees = Employee::all();
+        return view('items.equipment.create', compact( 'employees'));
     }
 
     /**
@@ -39,6 +45,8 @@ class EquipmentController extends Controller
             'amount' => 'required|numeric|between:0,9999999.99', // Adjust the range as needed
             'description' => 'nullable|string',
             'date_acquired' => 'required|date',
+            'employees_id' =>'required|exists:employees,id',
+            'categories_id'=> 'required|exists:categories,id'
         ]);
 
         Equipment::create($request->all());
@@ -60,7 +68,9 @@ class EquipmentController extends Controller
     public function edit($id)
     {
         $equipments = Equipment::findOrFail($id);
-        return view('items.equipment.edit', compact('equipements'));
+        $employees = Employee::all();
+        $categories = Category::all();
+        return view('items.equipment.edit', compact('equipments','employees'  ,'categories'));
     }
 
     /**
@@ -75,6 +85,8 @@ class EquipmentController extends Controller
             'amount' => 'required|numeric|between:0,9999999.99', // Adjust the range as needed
             'description' => 'nullable|string',
             'date_acquired' => 'required|date',
+            'employees_id'=>'required|exists:employees,id',
+            'categories_id'=> 'required|exists:categories,id'
         ]);
         $equipment = Equipment::findOrFail($id);
         $equipment->update($request->all());
