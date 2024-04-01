@@ -14,7 +14,7 @@
 
             <!-- Equipment list -->
             <div class="col-md-12 col-md-offset-1">
-                <table class="table table-bordered table-responsive table-striped">
+                <table id="mytable">
                     <thead>
                         <th>ID</th>
                         <th>Name</th>
@@ -86,4 +86,6 @@
             </div>
         </div>
     </div>
+
+
 @endsection
