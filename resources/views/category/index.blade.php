@@ -31,7 +31,7 @@
                                             class='fa fa-edit'></i> Edit</a>
                                     <a href="#delete{{ $category->id }}" data-bs-toggle="modal" class="btn btn-danger"><i
                                             class='fa fa-trash'></i> Delete</a>
-                                    @include('category.delete')
+                                    @include('category.delete')  {{----}}
                                     @include('category.edit')
                                 </td>
                             </tr>

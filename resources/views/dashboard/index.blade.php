@@ -48,32 +48,32 @@
                     <div class="icon">
                         <i class="fas fa-list-alt"></i>
                     </div>
-                    <a href="" class="small-box-footer">View <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{route('equipments')}}" class="small-box-footer">View <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 col-6">
                 <div class="small-box bg-primary">
                     <div class="inner">
                         {{-- This h3 is for number of data in the table --}}
-                        <h3>3</h3>
-                        <p>Total Products</p>
+                        <h3>{{$supplyCount}}</h3>
+                        <p>Total Supplies</p>
                     </div>
                     <div class="icon">
                         <i class="fas fas fa-th"></i>
                     </div>
-                    <a href="" class="small-box-footer">View <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{route('supplies')}}" class="small-box-footer">View <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 col-6">
                 <div class="small-box bg-secondary">
                     <div class="inner">
-                        <h3>4</h3>
-                        <p>Total Collections</p>
+                        <h3>{{$categoryCount}}</h3>
+                        <p>Total Category</p>
                     </div>
                     <div class="icon">
                         <i class="fas fas fa-file-pdf"></i>
                     </div>
-                    <a href="" class="small-box-footer">View <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{route('categories')}}" class="small-box-footer">View <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
         </div>

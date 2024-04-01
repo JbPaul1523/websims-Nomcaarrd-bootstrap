@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Employee;
 use App\Models\Equipment;
+use App\Models\Category;
+use App\Models\Assets;
 
 class HomeController extends Controller
 {
@@ -29,6 +31,8 @@ class HomeController extends Controller
         $userCount = User::count();
         $employeeCount = Employee::count();
         $equipmentCount = Equipment::count();
-        return view('dashboard.index', compact('userCount','employeeCount', 'equipmentCount'));
+        $supplyCount = Assets::count();
+        $categoryCount = Category::count();
+        return view('dashboard.index', compact('userCount','employeeCount', 'equipmentCount',  'categoryCount', 'supplyCount'));
     }
 }
