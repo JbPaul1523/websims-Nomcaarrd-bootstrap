@@ -9,6 +9,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AssetsController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,3 +72,6 @@ Route::get('/category/{id}/update', [CategoryController::class, 'edit'])->name('
 Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
 Route::get('profile/edit', [UserController::class, 'edit']);
+
+// Route for Handling the Report
+Route::get('report',[ReportController::class,'index'])->name( 'report' );  // show report page

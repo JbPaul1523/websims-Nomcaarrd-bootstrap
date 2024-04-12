@@ -152,7 +152,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">
+                            <a class="nav-link" href="{{route('report')}}">
                                 <i class="nav-icon fa fa-newspaper"></i>
                                 <p>
                                     REPORTS
