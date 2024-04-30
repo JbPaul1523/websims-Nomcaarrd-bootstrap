@@ -21,7 +21,7 @@
                         <th>Description</th>
                         <th>Amount</th>
                         <th>Stock</th>
-                        <th>Date Aquired</th>
+                        <th>Date Acquired</th>
                         <th>Action</th>
                     </thead>
                     <tbody>
@@ -32,7 +32,7 @@
                                 <td>{{ $supply->description }}</td>
                                 <td>{{ $supply->amount }}</td>
                                 <td>{{ $supply->stock }}</td>
-                                <td>{{ $supply->date_aquired }}</td>
+                                <td>{{ $supply->date_acquired }}</td>
                                 <td>
                                     {{-- This is the button for users edit and delete --}}
                                     <a href="#edit{{ $supply->id }}" data-bs-toggle="modal" class="btn btn-success"><i

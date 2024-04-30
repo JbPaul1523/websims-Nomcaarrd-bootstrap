@@ -23,7 +23,11 @@
                     <tbody>
                         @foreach ($employees as $employee)
                             <tr>
-                                <td>{{ $employee->name }}</td>
+                                <td>
+                                    <a href="{{route('employee.show', $employee->id)}}" data-bs-toggle="modal" data-bs-target="#show{{ $employee->id }}">
+                                        {{ $employee->name }}
+                                    </a>
+                                </td>
                                 <td>{{ $employee->position }}</td>
                                 <td>
                                     {{-- This is the button for users edit and delete --}}
@@ -33,6 +37,7 @@
                                             class='fa fa-trash'></i> Delete</a>
                                     @include('user-management.employee.delete')
                                     @include('user-management.employee.edit')
+                                    @include('user-management.employee.show')
                                 </td>
                             </tr>
                         @endforeach

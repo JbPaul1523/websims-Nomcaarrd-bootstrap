@@ -36,6 +36,7 @@ Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])-
 Route::get('/employee', [EmployeeController::class, 'index'])->name('employees');
 Route::get('/employee/create', [EmployeeController::class, 'create'])->name('employee.create');
 Route::post('/employee', [EmployeeController::class, 'store'])->name('employee.store');
+Route::get('/employee/{id}', [EmployeeController::class, 'show'])->name('employee.show');
 Route::delete('/employee/{id}', [EmployeeController::class, 'destroy'])->name('employee.destroy');
 Route::get('/employee/{id}/edit', [EmployeeController::class, 'edit'])->name('employee.edit');
 Route::put('/employee/{id}/update', [EmployeeController::class, 'update'])->name('employee.update');
@@ -50,6 +51,7 @@ Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.de
 // Equipments CRUD Route
 Route::get('/equipment', [EquipmentController::class, 'index'])->name('equipments');
 Route::get('/equipment/create', [EquipmentController::class, 'create'])->name('equipment.create');
+Route::get('/equipment/{id}', [EquipmentController::class, 'show'])->name('equipment.show');
 Route::post('/equipment', [EquipmentController::class, 'store'])->name('equipment.store');
 Route::put('/equipment/{id}/update', [EquipmentController::class, 'update'])->name('equipment.update');
 Route::get('/equipment/{id}/update', [EquipmentController::class, 'edit'])->name('equipment.edit');

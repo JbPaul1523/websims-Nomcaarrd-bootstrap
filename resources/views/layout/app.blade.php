@@ -152,12 +152,33 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('report')}}">
-                                <i class="nav-icon fa fa-newspaper"></i>
+                            <a href="" class="nav-link">
+                                <i class="nav-icon fas fa-newspaper"></i>
                                 <p>
                                     REPORTS
+                                    <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('equipments') }}" class="nav-link">
+                                        <i class="far nav-icon"></i>
+                                        <p>EQUIPMENTS</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('supplies') }}" class="nav-link">
+                                        <i class="far nav-icon"></i>
+                                        <p>SUPPLIES</p>
+                                    </a>
+                                </li>
+                                {{-- <li class="nav-item">
+                                    <a href="{{route('categories')}}" class="nav-link">
+                                        <i class="far nav-icon"></i>
+                                        <p>CATEGORY</p>
+                                    </a>
+                                </li> --}}
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="">
@@ -240,10 +261,16 @@
     <script>
         $(document).ready(function() {
     $('#mytable').DataTable({
-        "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]] // Customize the available options
+        "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]], // Customize the available options
+        "dom": 'lBfrtip', // Specify the elements to include in the table layout
+        "buttons": [
+            'copy', 'csv', 'excel', // Include export buttons
+        ],
+        "order":[[0, 'desc']]
     });
 });
-    </script>
+
+        </script>
 
 </body>
 

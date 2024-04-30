@@ -24,7 +24,7 @@
                         @foreach ($category as $category)
                             <tr>
                                 <td>{{$category->id}}</td>
-                                <td>{{ $category->name }}</td>
+                                <td>{{$category->name }}</td>
                                 <td>
                                     {{-- This is the button for users edit and delete --}}
                                    <a href="#edit{{ $category->id }}" data-bs-toggle="modal" class="btn btn-success"><i

@@ -5,12 +5,12 @@
     <div class="container">
         <div class="row">
             <!-- Button to trigger modal -->
-            <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addEquipmentModal">
+            <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addReportModal">
                 <i class="fa fa-plus"></i> Add Equipment
             </button>
 
             <!-- Modal for adding new Equipment -->
-            {{-- @include('items.equipment.create') --}}
+            {{-- @include('reports.equipment.create') --}}
 
             <!-- Equipment list -->
             {{-- <div class="col-md-12 col-md-offset-1">

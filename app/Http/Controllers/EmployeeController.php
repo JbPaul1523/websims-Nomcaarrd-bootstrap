@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Employee;
+use App\Models\Equipment;
 
 class EmployeeController extends Controller
 {
@@ -13,7 +14,8 @@ class EmployeeController extends Controller
     public function index()
     {
         $employees = Employee::all(); // Use the correct model name
-        return view('user-management.employee.index', ['employees' => $employees]);
+        $equipments = Equipment::all();
+        return view('user-management.employee.index', compact( 'employees','equipments'));
     }
 
     /**
@@ -21,7 +23,6 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-
         return view('user-management.employee.create');
     }
 
@@ -48,8 +49,9 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        $employee = Employee::findOrFail($id);
-        return view('user-management.employee.show', ['employee' => $employee]);
+        $employees = Employee::findOrFail($id);
+        $equipments = Equipment::findOrFail($id);
+        return view('user-management.employee.index', compact( 'employees','equipments'));
     }
 
     /**
