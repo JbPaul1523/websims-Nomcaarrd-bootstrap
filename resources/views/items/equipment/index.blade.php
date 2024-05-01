@@ -14,7 +14,7 @@
 
             <!-- Equipment list -->
             <div class="col-md-12 col-md-offset-1">
-                <table class="table table-bordered table-responsive table-striped">
+                <table id="mytable" class="table table-bordered table-responsive table-striped">
                     <thead>
                         <th>ID</th>
                         <th>Name</th>
@@ -30,7 +30,11 @@
                         @foreach ($equipments as $equipment)
                             <tr>
                                 <td>{{ $equipment->id }}</td>
-                                <td>{{ $equipment->name }}</td>
+                                <td>
+                                    <a href="{{route('equipment.show', $equipment->id)}}" data-bs-toggle="modal" data-bs-target="#show{{ $equipment->id }}">
+                                        {{ $equipment->name }}
+                                    </a>
+                                </td>
                                 <td>{{ $equipment->description }}</td>
                                 <td>{{ $equipment->serial_number }}</td>
                                 <td>{{ $equipment->date_acquired }}</td>
@@ -65,6 +69,7 @@
                                             class='fa fa-trash'></i> Delete</a>
                                     @include('items.equipment.delete')
                                     @include('items.equipment.edit')
+                                    @include('items.equipment.show')
                                 </td>
                             </tr>
                         @endforeach
@@ -86,4 +91,6 @@
             </div>
         </div>
     </div>
+
+
 @endsection

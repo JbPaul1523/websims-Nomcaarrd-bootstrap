@@ -7,14 +7,24 @@
     <title>@yield('pagetitle')</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    {{-- Bootstrap 5 --}}
+    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> --}}
+    <!-- DataTables CSS -->
+    {{-- <link rel="stylesheet" href="//cdn.datatables.net/2.0.2/css/dataTables.dataTables.min.css"> --}}
+    <link rel="stylesheet" href="DataTables\datatables.min.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- DataTables JS -->
+    <script src="//cdn.datatables.net/2.0.2/js/dataTables.min.js"></script>
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed" data-panel-auto-height-mode="height">
@@ -28,12 +38,6 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
                             class="fas fa-bars"></i></a>
                 </li>
-                {{-- <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li> --}}
             </ul>
 
             <!-- Right navbar links -->
@@ -71,10 +75,10 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="{{route('dashboard')}}" class="brand-link">
+            <a href="{{ route('dashboard') }}" class="brand-link">
                 <img src="icons/webLogo.png" alt="NOMCAARRD Logo" class="brand-image img-circle elevation-3"
                     style="opacity: .8">
-                <span class="brand-text info font-weight-light d-block">NOMCAARRD WEBSIMS</span>
+                <span class="fluid brand-text info font-weight-light d-block">NOMCAARRD WEBSIMS</span>
             </a>
 
             <!-- Sidebar -->
@@ -86,7 +90,7 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
-                            <a href="{{route('dashboard')}} " class="nav-link">
+                            <a href="{{ route('dashboard') }} " class="nav-link">
                                 <div class="nav-icon fas fa-tachometer-alt"></div>
                                 <p>
                                     DASHBOARD
@@ -105,20 +109,18 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{route('employees')}}" class="nav-link">
+                                    <a href="{{ route('employees') }}" class="nav-link">
                                         <i class="fas nav-icon fa-user"></i>
                                         <p>EMPLOYEE</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('users')}}" class="nav-link">
+                                    <a href="{{ route('users') }}" class="nav-link">
                                         <i class="far nav-icon fa-user"></i>
                                         <p>USERS</p>
                                     </a>
                                 </li>
                             </ul>
-
-
                         </li>
                         <li class="nav-item">
                             <a href="" class="nav-link">
@@ -130,13 +132,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{route('equipments')}}" class="nav-link">
+                                    <a href="{{ route('equipments') }}" class="nav-link">
                                         <i class="far nav-icon"></i>
                                         <p>EQUIPMENTS</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('supplies')}}" class="nav-link">
+                                    <a href="{{ route('supplies') }}" class="nav-link">
                                         <i class="far nav-icon"></i>
                                         <p>SUPPLIES</p>
                                     </a>
@@ -149,14 +151,34 @@
                                 </li>
                             </ul>
                         </li>
-
                         <li class="nav-item">
-                            <a class="nav-link" href="">
-                                <i class="nav-icon fa fa-newspaper"></i>
+                            <a href="" class="nav-link">
+                                <i class="nav-icon fas fa-newspaper"></i>
                                 <p>
                                     REPORTS
+                                    <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('equipments') }}" class="nav-link">
+                                        <i class="far nav-icon"></i>
+                                        <p>EQUIPMENTS</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('supplies') }}" class="nav-link">
+                                        <i class="far nav-icon"></i>
+                                        <p>SUPPLIES</p>
+                                    </a>
+                                </li>
+                                {{-- <li class="nav-item">
+                                    <a href="{{route('categories')}}" class="nav-link">
+                                        <i class="far nav-icon"></i>
+                                        <p>CATEGORY</p>
+                                    </a>
+                                </li> --}}
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="">
@@ -167,7 +189,7 @@
                             </a>
                             <div class="button" aria-labelledby="">
                                 <a class="" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
+                                    onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
@@ -176,7 +198,7 @@
                                     @csrf
                                 </form>
                             </div>
-
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -202,7 +224,6 @@
                 </div><!-- /.container-fluid -->
             </section>
 
-
             @yield('mainbody')
 
         </div>
@@ -219,8 +240,6 @@
     </div>
     <!-- ./wrapper -->
 
-    <!-- jQuery -->
-    <script src="plugins/jquery/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -235,8 +254,24 @@
     <script src="dist/js/adminlte.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="dist/js/demo.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Bootstrap 5 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    {{-- DataTables --}}
+    <script src="DataTables/datatables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+    $('#mytable').DataTable({
+        "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]], // Customize the available options
+        "dom": 'lBfrtip', // Specify the elements to include in the table layout
+        "buttons": [
+            'copy', 'csv', 'excel', // Include export buttons
+        ],
+        "order":[[0, 'desc']]
+    });
+});
+
+        </script>
+
 </body>
 
 </html>

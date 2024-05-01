@@ -14,7 +14,7 @@
 
             <!-- Category list -->
             <div class="col-md-12 col-md-offset-1">
-                <table class="table table-bordered table-responsive table-striped">
+                <table id="mytable" class="table table-bordered table-responsive table-striped">
                     <thead>
                         <th>ID</th>
                         <th>Name</th>
@@ -24,7 +24,7 @@
                         @foreach ($category as $category)
                             <tr>
                                 <td>{{$category->id}}</td>
-                                <td>{{ $category->name }}</td>
+                                <td>{{$category->name }}</td>
                                 <td>
                                     {{-- This is the button for users edit and delete --}}
                                    <a href="#edit{{ $category->id }}" data-bs-toggle="modal" class="btn btn-success"><i

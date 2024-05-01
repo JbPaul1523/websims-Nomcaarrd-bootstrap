@@ -14,14 +14,14 @@
 
             <!-- Equipment list -->
             <div class="col-md-12 col-md-offset-1">
-                <table class="table table-bordered table-responsive table-striped">
+                <table id="mytable" class="table table-bordered table-responsive table-striped">
                     <thead>
                         <th>ID</th>
                         <th>Name</th>
                         <th>Description</th>
                         <th>Amount</th>
                         <th>Stock</th>
-                        <th>Date Aquired</th>
+                        <th>Date Acquired</th>
                         <th>Action</th>
                     </thead>
                     <tbody>
@@ -32,7 +32,7 @@
                                 <td>{{ $supply->description }}</td>
                                 <td>{{ $supply->amount }}</td>
                                 <td>{{ $supply->stock }}</td>
-                                <td>{{ $supply->date_aquired }}</td>
+                                <td>{{ $supply->date_acquired }}</td>
                                 <td>
                                     {{-- This is the button for users edit and delete --}}
                                     <a href="#edit{{ $supply->id }}" data-bs-toggle="modal" class="btn btn-success"><i

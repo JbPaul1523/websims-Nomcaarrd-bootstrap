@@ -1,4 +1,4 @@
-<div class="modal fade" id="addCategoryModal" tabindex="-1" aria-labelledby="addCategoryModalLabel" aria-hidden="true">
+<div class="modal fade" id="addCategoryModal" tabindex="-1" aria-labelledby="addCategoryModalLabel" aria-hidden="true">ericka jue
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -13,6 +13,13 @@
                             <label>Category Name:</label>
                             <input type="text" class="form-control" name="name" required>
                         </div>
+
+                    </div>
+                    {{-- <div class="row">
+                        <div class="col-md-6">
+                            <label>Category for:</label>
+                            <input type="radio" class="form-control" name="name" required>
+                        </div> --}}
 
                     </div>
                     <div class="row mt-3">
