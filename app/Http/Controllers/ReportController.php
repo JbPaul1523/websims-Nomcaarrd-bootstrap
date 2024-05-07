@@ -20,7 +20,7 @@ class ReportController extends Controller
         $assets = Assets::all();
         $equipment = Equipment::all();
 
-        return view('reports.create', compact('reports','employees','assets','equipment'));
+        return view('reports.sumReport.index', compact('reports','employees','assets','equipment'));
     }
 
     /**
@@ -33,7 +33,7 @@ class ReportController extends Controller
         $assets = Assets::all();
         $equipment = Equipment::all();
 
-        return view('reports.create', compact('reports','employees','assets','equipment'));
+        return view('reports.sumReport.create', compact('reports','employees','assets','equipment'));
     }
 
     /**

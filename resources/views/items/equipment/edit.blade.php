@@ -12,29 +12,36 @@
                     <div class="row">
                         <div class="col-md-6">
                             <label>Name:</label>
-                            <input type="text" class="form-control" name="name" value="{{$equipment->name}}" required>
+                            <input type="text" class="form-control" name="name" value="{{ $equipment->name }}"
+                                required>
                         </div>
                         <div class="col-md-6">
                             <label>Description:</label>
-                            <input type="text" class="form-control" name="description" value="{{$equipment->description}}"  required>
+                            <input type="text" class="form-control" name="description"
+                                value="{{ $equipment->description }}" required>
                         </div>
                         <div class="col-md-6">
                             <label>Serial Number:</label>
-                            <input type="text" class="form-control" name="serial_number" value="{{$equipment->serial_number}}" required>
+                            <input type="text" class="form-control" name="serial_number"
+                                value="{{ $equipment->serial_number }}" required>
                         </div>
                         <div class="col-md-6">
                             <label>Amount</label>
-                            <input type="text" class="form-control" name="amount" value="{{$equipment->amount}}" required>
+                            <input type="text" class="form-control" name="amount" value="{{ $equipment->amount }}"
+                                required>
                         </div>
                         <div class="col-md-6">
                             <label>Date Acquired:</label>
-                            <input type="date" class="form-control" name="date_acquired" value="{{$equipment->date_acquired}}" required>
+                            <input type="date" class="form-control" name="date_acquired"
+                                value="{{ $equipment->date_acquired }}" required>
                         </div>
                         <div class="col-md-6">
                             <label>Condition:</label>
-                            <select class="form-control" name="condition"  required>
+                            <select class="form-control" name="condition" required>
                                 @foreach (\App\Models\Equipment::getConditionOptions() as $value => $label)
-                                    <option value="{{ $value }}">{{ $label }}</option>
+                                    <option value="{{ $value }}"
+                                        {{ $value == $equipment->condition ? 'selected' : '' }}>{{ $label }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
@@ -43,7 +50,9 @@
                             <select name="employees_id" class="form-control" required>
                                 <option value="">Select an Employee</option>
                                 @foreach ($employees as $employee)
-                                    <option value="{{ $employee->id }}">{{ $employee->name }}</option>
+                                    <option value="{{ $employee->id }}"
+                                        {{ $employee->id == $equipment->employees_id ? 'selected' : '' }}>
+                                        {{ $employee->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -52,9 +61,11 @@
                             <select name="categories_id" class="form-control" required>
                                 <option value="">Select a Category</option>
                                 @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    <option value="{{ $category->id }}"
+                                        {{ $category->id == $equipment->categories_id ? 'selected' : '' }}>
+                                        {{ $category->name }}</option>
                                 @endforeach
-                            </select >
+                            </select>
                         </div>
 
                     </div>

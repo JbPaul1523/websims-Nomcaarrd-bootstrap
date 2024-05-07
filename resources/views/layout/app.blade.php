@@ -161,7 +161,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('equipments') }}" class="nav-link">
+                                    <a href="{{ route('report') }}" class="nav-link">
                                         <i class="far nav-icon"></i>
                                         <p>EQUIPMENTS</p>
                                     </a>
@@ -172,12 +172,12 @@
                                         <p>SUPPLIES</p>
                                     </a>
                                 </li>
-                                {{-- <li class="nav-item">
-                                    <a href="{{route('categories')}}" class="nav-link">
+                                <li class="nav-item">
+                                    <a href="{{route('purchaseReport')}}" class="nav-link">
                                         <i class="far nav-icon"></i>
-                                        <p>CATEGORY</p>
+                                        <p>PURCHASE REPORT</p>
                                     </a>
-                                </li> --}}
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -262,10 +262,7 @@
         $(document).ready(function() {
     $('#mytable').DataTable({
         "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]], // Customize the available options
-        "dom": 'lBfrtip', // Specify the elements to include in the table layout
-        "buttons": [
-            'copy', 'csv', 'excel', // Include export buttons
-        ],
+
         "order":[[0, 'desc']]
     });
 });
