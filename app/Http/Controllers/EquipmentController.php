@@ -72,7 +72,7 @@ class EquipmentController extends Controller
         $equipments = Equipment::findOrFail($id);
         $employees = Employee::all();
         $categories = Category::all();
-        return view('items.equipment.edit', compact('equipments','employees'  ,'categories'));
+        return view('items.equipment.edit', compact('equipments','employees','categories'));
     }
 
     /**

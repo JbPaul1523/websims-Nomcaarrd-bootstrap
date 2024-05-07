@@ -50,7 +50,7 @@ class EmployeeController extends Controller
     public function show($id)
     {
         $employees = Employee::findOrFail($id);
-        $equipments = Equipment::findOrFail($id);
+        $equipments = $employees->equipments;
         return view('user-management.employee.index', compact( 'employees','equipments'));
     }
 

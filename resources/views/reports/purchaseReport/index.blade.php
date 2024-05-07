@@ -1,41 +1,46 @@
 @extends('layout.app')
-@section('pagetitle', 'Reports')
+@section('pagetitle', 'Purchase Reports')
 
 @section('mainbody')
     <div class="container">
         <div class="row">
             <!-- Button to trigger modal -->
-            <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addReportModal">
-                <i class="fa fa-plus"></i> Add Equipment
+            <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addPrModal">
+                <i class="fa fa-plus"></i> Add Report
             </button>
 
             <!-- Modal for adding new Equipment -->
-            {{-- @include('reports.equipment.create') --}}
+            @include('reports.purchaseReport.create')
 
             <!-- Equipment list -->
-            {{-- <div class="col-md-12 col-md-offset-1">
+            <div class="col-md-12 col-md-offset-1">
                 <table id="mytable" class="table table-bordered table-responsive table-striped">
                     <thead>
-                        <th>ID</th>
+                        <th>Pr No.</th>
                         <th>Name</th>
                         <th>Description</th>
-                        <th>Serial Number</th>
-                        <th>Date Aquired</th>
-                        <th>Condition</th>
                         <th>Category</th>
-                        <th>Assigned to:</th>
-                        <th>Action</th>
-                    </thead> --}}
-                    {{-- <tbody> --}}
-                        {{-- @foreach ($equipments as $equipment)
+                        {{-- <th>Supplies</th>
+                        <th>Category</th>
+                        <th>Employee</th>
+                        <th>Equipments</th> --}}
+                        <th>Create at</th>
+                        <th>Updated at</th>
+                    </thead>
+                    <tbody>
+                        @foreach ($purchaseReports as $purchaseReport)
                             <tr>
-                                <td>{{ $equipment->id }}</td>
-                                <td>{{ $equipment->name }}</td>
-                                <td>{{ $equipment->description }}</td>
-                                <td>{{ $equipment->serial_number }}</td>
-                                <td>{{ $equipment->date_acquired }}</td>
-                                <td>{{ $equipment->condition }}</td>
-                                <td>@if ($equipment->categories_id)
+                                <td>{{ $purchaseReport->pr_no }}</td>
+                                <td>{{ $purchaseReport->name }}</td>
+                                <td>{{ $purchaseReport->description }}</td>
+                                <td>{{ $purchaseReport->category}}</td>
+                                <td>{{ $purchaseReport->created_at}}</td>
+                                <td>{{ $purchaseReport->updated_at}}</td>
+
+                                {{-- <td>{{ $purchaseReport->asset_id }}</td>
+                                <td>{{ $purchaseReport->category_id }}</td>
+                                <td>{{ $purchaseReport->employee_id }}</td> --}}
+                                {{-- <td>@if ($equipment->categories_id)
                                     @foreach ($categories as $category)
                                         @if ($category->id === $equipment->categories_id)
                                             {{ $category->name }}
@@ -66,7 +71,7 @@
                                             class='fa fa-trash'></i> Delete</a>
                                     @include('items.equipment.delete')
                                     @include('items.equipment.edit')
-                                </td>
+                                </td> --}}
                             </tr>
                         @endforeach
                         @if (session('success'))
@@ -82,7 +87,7 @@
                         @endif
                     </tbody>
 
-                </table> --}}
+                </table>
 
             </div>
         </div>

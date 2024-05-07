@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\EquipmentController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PurchaseReport;
+use App\Http\Controllers\PurchaseReportController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
@@ -10,6 +12,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AssetsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ReportController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -76,4 +79,13 @@ Route::delete('/category/{id}', [CategoryController::class, 'destroy'])->name('c
 Route::get('profile/edit', [UserController::class, 'edit']);
 
 // Route for Handling the Report
-Route::get('report',[ReportController::class,'index'])->name( 'report' );  // show report page
+Route::get('/report',[ReportController::class,'index'])->name( 'report' );  // show report page
+Route::get('/report/create', [ReportController::class, 'create'])->name('report.create');
+
+Route::get('/purchaseReport',[PurchaseReportController::class,'index'])->name('purchaseReport');
+Route::get('/purchaseReport/create', [PurchaseReportController::class, 'create'])->name('purchaseReport.create');
+Route::post('/purchaseReport', [PurchaseReportController::class, 'store'])->name('purchaseReport.store');
+Route::put('/purchaseReport/{id}/update', [PurchaseReportController::class, 'update'])->name('purchaseReport.update');
+Route::get('/purchaseReport/{id}/update', [PurchaseReportController::class, 'edit'])->name('purchaseReport.edit');
+Route::delete('/purchaseReport/{id}', [PurchaseReportController::class, 'destroy'])->name('purchaseReport.destroy');
+
