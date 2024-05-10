@@ -31,7 +31,8 @@
                             <tr>
                                 <td>{{ $equipment->id }}</td>
                                 <td>
-                                    <a href="{{route('equipment.show', $equipment->id)}}" data-bs-toggle="modal" data-bs-target="#show{{ $equipment->id }}">
+                                    <a href="{{ route('equipment.show', $equipment->id) }}" data-bs-toggle="modal"
+                                        data-bs-target="#show{{ $equipment->id }}">
                                         {{ $equipment->name }}
                                     </a>
                                 </td>
@@ -39,58 +40,60 @@
                                 <td>{{ $equipment->serial_number }}</td>
                                 <td>{{ $equipment->date_acquired }}</td>
                                 <td>{{ $equipment->condition }}</td>
-                                <td>@if ($equipment->categories_id)
-                                    @foreach ($categories as $category)
-                                        @if ($category->id === $equipment->categories_id)
-                                            {{ $category->name }}
+                                <td>
+                                    @if ($equipment->categories_id)
+                                        @foreach ($categories as $category)
+                                            @if ($category->id === $equipment->categories_id)
+                                                {{ $category->name }}
                                             @break
                                         @endif
                                     @endforeach
                                 @else
                                     N/A
-                                @endif</td>
-                                <td>
-                                    @if ($equipment->employees_id)
-                                        @foreach ($employees as $employee)
-                                            @if ($employee->id === $equipment->employees_id)
-                                                {{ $employee->name }}
-                                                @break
-                                            @endif
-                                        @endforeach
-                                    @else
-                                        N/A
+                                @endif
+                            </td>
+                            <td>
+                                @if ($equipment->employees_id)
+                                    @foreach ($employees as $employee)
+                                        @if ($employee->id === $equipment->employees_id)
+                                            {{ $employee->name }}
+                                        @break
                                     @endif
-                                </td> <!-- Display employee name -->
-                                <td>
-                                    {{-- This is the button for users edit and delete --}}
-                                    <a href="#edit{{ $equipment->id }}" data-bs-toggle="modal" class="btn btn-success"><i
-                                            class='fa fa-edit'></i> Edit</a>
-                                    <a href="#delete{{ $equipment->id }}" data-bs-toggle="modal" class="btn btn-danger"><i
-                                            class='fa fa-trash'></i> Delete</a>
-                                    @include('items.equipment.delete')
-                                    @include('items.equipment.edit')
-                                    @include('items.equipment.show')
-                                </td>
-                            </tr>
-                        @endforeach
-                        @if (session('success'))
-                            <div class="alert alert-success">
-                                {{ session('success') }}
-                            </div>
-                        @endif
+                                @endforeach
+                            @else
+                                N/A
+                            @endif
+                        </td> <!-- Display employee name -->
+                        <td>
+                            {{-- This is the button for users edit and delete --}}
+                            <a href="#edit{{ $equipment->id }}" data-bs-toggle="modal" class="btn btn-success"><i
+                                    class='fa fa-edit'></i> Edit</a>
+                            <a href="#delete{{ $equipment->id }}" data-bs-toggle="modal" class="btn btn-danger"><i
+                                    class='fa fa-trash'></i> Delete</a>
+                            @include('items.equipment.delete')
+                            @include('items.equipment.edit')
+                            @include('items.equipment.show')
+                        </td>
+                    </tr>
+                @endforeach
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
 
-                        @if (session('error'))
-                            <div class="alert alert-danger">
-                                {{ session('error') }}
-                            </div>
-                        @endif
-                    </tbody>
+                @if (session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
+            </tbody>
 
-                </table>
+        </table>
 
-            </div>
-        </div>
     </div>
+</div>
+</div>
 
 
 @endsection

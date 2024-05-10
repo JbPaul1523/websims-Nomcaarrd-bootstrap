@@ -10,11 +10,11 @@
             </button>
 
             <!-- Modal for adding new employee -->
-           @include('user-management.employee.create')
+            @include('user-management.employee.create')
 
             <!-- Employee list -->
             <div class="col-md-12 col-md-offset-1">
-                <table id="mytable" class="table table-bordered table-responsive table-striped">
+                <table id="mytable" class="table table-striped table-bordered nowrap" style="width:100%">
                     <thead>
                         <th>Name</th>
                         <th>Position</th>
@@ -24,7 +24,8 @@
                         @foreach ($employees as $employee)
                             <tr>
                                 <td>
-                                    <a href="{{route('employee.show', $employee->id)}}" data-bs-toggle="modal" data-bs-target="#show{{ $employee->id }}">
+                                    <a href="{{ route('employee.show', $employee->id) }}" data-bs-toggle="modal"
+                                        data-bs-target="#show{{ $employee->id }}">
                                         {{ $employee->name }}
                                     </a>
                                 </td>
