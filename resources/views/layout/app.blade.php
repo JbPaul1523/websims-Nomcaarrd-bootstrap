@@ -7,7 +7,8 @@
     <title>@yield('pagetitle')</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
@@ -21,7 +22,8 @@
     <link rel="stylesheet" href="DataTables\datatables.min.css">
 
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <!-- DataTables JS -->
     <script src="//cdn.datatables.net/2.0.2/js/dataTables.min.js"></script>
 
@@ -144,7 +146,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('categories')}}" class="nav-link">
+                                    <a href="{{ route('categories') }}" class="nav-link">
                                         <i class="far nav-icon"></i>
                                         <p>CATEGORY</p>
                                     </a>
@@ -173,7 +175,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('purchaseReport')}}" class="nav-link">
+                                    <a href="{{ route('purchaseReport') }}" class="nav-link">
                                         <i class="far nav-icon"></i>
                                         <p>PURCHASE REPORT</p>
                                     </a>
@@ -194,7 +196,8 @@
                                     {{ __('Logout') }}
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    class="d-none">
                                     @csrf
                                 </form>
                             </div>
@@ -255,19 +258,23 @@
     <!-- AdminLTE for demo purposes -->
     <script src="dist/js/demo.js"></script>
     <!-- Bootstrap 5 -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
     {{-- DataTables --}}
     <script src="DataTables/datatables.min.js"></script>
     <script>
+        // Initialize All Tables
         $(document).ready(function() {
-    $('#mytable').DataTable({
-        "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]], // Customize the available options
+            // Initialize DataTable for #mytable
+            $('#mytable').DataTable({
 
-        "order":[[0, 'desc']]
-    });
-});
+            });
 
-        </script>
+            // Initialize DataTable for #showEmployee on document ready
+
+        });
+    </script>
 
 </body>
 
