@@ -2,7 +2,7 @@
 @section('pagetitle', 'Dashboard')
 
 @section('mainbody')
-    <div class="content-fluid">
+    <div class="container content-fluid">
         <div class="row">
 
             {{-- This box is for Users count --}}

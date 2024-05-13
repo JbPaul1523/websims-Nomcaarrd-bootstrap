@@ -4,7 +4,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card" style="max-width: 500px; margin: 0 auto;">
+                <div style="display: flex; justify-content: center; align-items: center;"><img
+                    src="{{ asset('icons/webLogo.png') }}" alt="WebSims Logo" style="width:5cm"></div>
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
