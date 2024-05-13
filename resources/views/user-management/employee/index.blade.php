@@ -56,7 +56,11 @@
                     </tbody>
 
                 </table>
-
+                <div class="container">
+                    <div class="content bg-primary" style="z-index: 9999" style="position: absolute; width:600px ; height: 400px; margin: auto">
+                        this is a modal
+                    </div>
+                </div>
             </div>
         </div>
     </div>

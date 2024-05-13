@@ -11,6 +11,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AssetsController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -29,7 +30,7 @@ Route::get('/', function () {
     return view('home');
 });
 
-//Auth::routes();
+Auth::routes();
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 
@@ -88,4 +89,10 @@ Route::post('/purchaseReport', [PurchaseReportController::class, 'store'])->name
 Route::put('/purchaseReport/{id}/update', [PurchaseReportController::class, 'update'])->name('purchaseReport.update');
 Route::get('/purchaseReport/{id}/update', [PurchaseReportController::class, 'edit'])->name('purchaseReport.edit');
 Route::delete('/purchaseReport/{id}', [PurchaseReportController::class, 'destroy'])->name('purchaseReport.destroy');
+
+
+// Route for printing reports
+Route::get('employee/equipment/report/{id}', [EmployeeController::class, 'printPDF'])->name('print.employee.equipment');
+
+
 
