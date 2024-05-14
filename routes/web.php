@@ -12,6 +12,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AssetsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ReportController;
+use Illuminate\Support\Facades\Auth;
 
 
 /*
@@ -26,20 +27,25 @@ use App\Http\Controllers\ReportController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 
-// Route::middleware(['auth','user-role:user'])->group(function(){
-//     Route::get('/admin/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
-// }
-// );
-// Route::middleware(['auth','user-role:admin'])->group(function(){
-//     Route::get('/user/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
-// }
-// );
+// Routes for registered users with admin access
+/* Route::middleware(['permission:0', 'auth'])->group(function () {
+    /*
+        Users or Employee
+    Route::middleware(['permission:1'])->group(function () {
+        /*
+            Admin or superadmin
+
+
+    });
+
+}); */
+
 
 
 
@@ -96,12 +102,18 @@ Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])-
     Route::get('/report', [ReportController::class, 'index'])->name('report');  // show report page
     Route::get('/report/create', [ReportController::class, 'create'])->name('report.create');
 
-    Route::get('/purchaseReport', [PurchaseReportController::class, 'index'])->name('purchaseReport');
-    Route::get('/purchaseReport/create', [PurchaseReportController::class, 'create'])->name('purchaseReport.create');
-    Route::post('/purchaseReport', [PurchaseReportController::class, 'store'])->name('purchaseReport.store');
-    Route::put('/purchaseReport/{id}/update', [PurchaseReportController::class, 'update'])->name('purchaseReport.update');
-    Route::get('/purchaseReport/{id}/update', [PurchaseReportController::class, 'edit'])->name('purchaseReport.edit');
-    Route::delete('/purchaseReport/{id}', [PurchaseReportController::class, 'destroy'])->name('purchaseReport.destroy');
+Route::get('/purchaseReport',[PurchaseReportController::class,'index'])->name('purchaseReport');
+Route::get('/purchaseReport/create', [PurchaseReportController::class, 'create'])->name('purchaseReport.create');
+Route::post('/purchaseReport', [PurchaseReportController::class, 'store'])->name('purchaseReport.store');
+Route::put('/purchaseReport/{id}/update', [PurchaseReportController::class, 'update'])->name('purchaseReport.update');
+Route::get('/purchaseReport/{id}/update', [PurchaseReportController::class, 'edit'])->name('purchaseReport.edit');
+Route::delete('/purchaseReport/{id}', [PurchaseReportController::class, 'destroy'])->name('purchaseReport.destroy');
+
+
+// Route for printing reports
+Route::get('employee/equipment/report/{id}', [EmployeeController::class, 'printPDF'])->name('print.employee.equipment');
+
+
 
     //Route for Handling the Supplies Report
     Route::get('/reportsupply', [AssetsController::class, 'suppliesReportIndex'])->name('supplyReport');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PurchaseReport;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Employee;
@@ -33,6 +34,38 @@ class HomeController extends Controller
         $equipmentCount = Equipment::count();
         $supplyCount = Assets::count();
         $categoryCount = Category::count();
-        return view('dashboard.index', compact('userCount','employeeCount', 'equipmentCount',  'categoryCount', 'supplyCount'));
+
+        $year = date('Y');
+
+        //dd($year);
+
+        $data = PurchaseReport::selectRaw('MONTH(created_at) as month, COUNT(*) as count')
+            ->whereYear('created_at', $year)
+            ->groupByRaw('MONTH(created_at)')
+            ->get();
+
+        // Ensure all months are included with count 0 if no entries exist for that month
+        $monthlyData = array_fill(1, 12, 0);
+        foreach ($data as $entry) {
+            $monthlyData[$entry->month] = $entry->count;
+        }
+
+        $employee = Employee::withCount('equipments')->get();
+
+        $label = $employee->pluck('name');
+        $values = $employee->sum('equipments_count');
+
+
+
+        return view('dashboard.index', compact(
+            'userCount',
+            'employeeCount',
+            'equipmentCount',
+            'categoryCount',
+            'supplyCount',
+            'monthlyData',
+            'label',
+            'values'
+        ));
     }
 }

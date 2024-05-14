@@ -4,7 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('pagetitle')</title>
+    <meta>
+
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -47,7 +50,7 @@
                 <!-- Notifications Dropdown Menu -->
                 <li class="nav-item dropdown">
                     <div class="">Current Date and Time:</div>
-                    <p id="current-date"></p>
+                    <p id="current-date" style="font-size: "></p>
                 </li>
             </div>
         </nav>
@@ -142,16 +145,16 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('equipmentReport') }}" class="nav-link">
+                                {{--     <a href="{{ route('equipmentReport') }}" class="nav-link">
                                         <i class="far nav-icon"></i>
                                         <p>EQUIPMENTS REPORT</p>
-                                    </a>
+                                    </a> --}}
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('supplyReport') }}" class="nav-link">
+                                 {{--    <a href="{{ route('supplyReport') }}" class="nav-link">
                                         <i class="far nav-icon"></i>
                                         <p>SUPPLY REPORT</p>
-                                    </a>
+                                    </a> --}}
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('purchaseReport') }}" class="nav-link">
@@ -169,16 +172,16 @@
                                 </p>
                             </a>
                             <div class="button" aria-labelledby="">
-                                <a class="" href="{{ route('logout') }}"
+                              {{--   <a class="" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
-                                </a>
+                                </a> --}}
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                {{-- <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                     class="d-none">
                                     @csrf
-                                </form>
+                                </form> --}}
                             </div>
                         </li>
                     </ul>
@@ -280,5 +283,4 @@
     </script>
 
 </body>
-
 </html>

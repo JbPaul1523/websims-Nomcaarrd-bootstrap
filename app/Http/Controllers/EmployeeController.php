@@ -16,8 +16,7 @@ class EmployeeController extends Controller
     {
         $employees = Employee::all(); // Use the correct model name
         $equipments = Equipment::all();
-        $currentTime = Carbon::now();
-        return view('user-management.employee.index', compact( 'employees','equipments','currentTime'));
+        return view('user-management.employee.index', compact('employees', 'equipments'));
     }
 
     /**
@@ -53,7 +52,7 @@ class EmployeeController extends Controller
     {
         $employees = Employee::findOrFail($id);
         $equipments = $employees->equipments;
-        return view('user-management.employee.index', compact( 'employees','equipments'));
+        return view('user-management.employee.index', compact('employees', 'equipments'));
     }
 
     /**
@@ -94,5 +93,47 @@ class EmployeeController extends Controller
         $employee->delete();
 
         return redirect()->route('employees')->with('success', 'Item deleted successfully');
+    }
+
+
+    public function printPDF($id)
+    {
+        $employee = Employee::findOrFail($id);
+
+        $html = '
+            <div>
+               <p style="font-size: 1.25rem; font-weight: 700"> '. $employee->name .' Equipement Report </p>
+            </div>
+            <div style="width: 100%;">
+                <table border="1" style="border-collapse: collapse; width:100%">
+                    <thead>
+                        <tr align="left">
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Serial Number</th>
+                            <th>Date Acquired</th>
+                            <th>Condition</th>
+                        </tr>
+                    </thead>
+        ';
+
+        $html .= '<tbody>';
+        foreach ($employee->equipments as $item) {
+            $html .= '<tr align="left">
+                <td style="padding: 5px">' . $item->id . '</td>
+                <td style="padding: 5px">' . $item->name . '</td>
+                <td style="padding: 5px">' . $item->description . '</td>
+                <td style="padding: 5px">' . $item->serial_number . '</td>
+                <td style="padding: 5px">' . $item->date_acquired . '</td>
+                <td style="padding: 5px">' . $item->condition . '</td>
+                </tr>';
+        }
+        $html .= '</tbody></table></div>';
+
+
+
+        //dd($html);
+        return response()->json($html);
     }
 }
