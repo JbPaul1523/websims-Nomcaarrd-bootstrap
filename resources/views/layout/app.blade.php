@@ -50,7 +50,7 @@
                 <!-- Notifications Dropdown Menu -->
                 <li class="nav-item dropdown">
                     <div class="">Current Date and Time:</div>
-                    <p id="current-date"></p>
+                    <p id="current-date" style="font-size: "></p>
                 </li>
             </div>
         </nav>
@@ -145,16 +145,16 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('equipmentReport') }}" class="nav-link">
+                                {{--     <a href="{{ route('equipmentReport') }}" class="nav-link">
                                         <i class="far nav-icon"></i>
                                         <p>EQUIPMENTS REPORT</p>
-                                    </a>
+                                    </a> --}}
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('supplyReport') }}" class="nav-link">
+                                 {{--    <a href="{{ route('supplyReport') }}" class="nav-link">
                                         <i class="far nav-icon"></i>
                                         <p>SUPPLY REPORT</p>
-                                    </a>
+                                    </a> --}}
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('purchaseReport') }}" class="nav-link">

@@ -34,6 +34,22 @@ Auth::routes();
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 
+// Routes for registered users with admin access
+/* Route::middleware(['permission:0', 'auth'])->group(function () {
+    /*
+        Users or Employee
+    Route::middleware(['permission:1'])->group(function () {
+        /*
+            Admin or superadmin
+
+
+    });
+
+}); */
+
+
+
+
 // This ROutes will update in the thoughout the project :)
 
 //route for Employee
