@@ -11,23 +11,17 @@
 
                 <!-- Modal for adding new Equipment -->
                 @include('reports.sumReport.create')
-                @include('reports.sumReport.employeemodal')
-                @include('reports.sumReport.showModal')
+
 
                 <!-- Equipment list -->
-                {{-- <div class="col-md-12 col-md-offset-1">
+                <div class="col-md-12 col-md-offset-1">
                     <table id="mytable" class="table table-bordered table-responsive table-striped">
                         <thead>
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Description</th>
-                            <th>Serial Number</th>
-                            <th>Date Aquired</th>
-                            <th>Condition</th>
-                            <th>Category</th>
-                            <th>Assigned to:</th>
-                            <th>Action</th>
-                        </thead> --}}
+                            <th>Current Stock</th>
+                            <th>Stock</th>
+                        </thead>
                         {{-- <tbody> --}}
                             {{-- @foreach ($equipments as $equipment)
                                 <tr>

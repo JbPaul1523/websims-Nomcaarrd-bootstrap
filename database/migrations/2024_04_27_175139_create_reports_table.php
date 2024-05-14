@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('filename');
             $table->foreignId('employees_id')->nullable()->constrained('employees')->onDelete('set null');
             $table->foreignId('equipments_id')->nullable()->constrained('equipments')->onDelete('set null');
             $table->foreignId('assets_id')->nullable()->constrained('assets')->onDelete('set null');

@@ -16,6 +16,12 @@ class AssetsController extends Controller
         return view('items.supplies.index', compact('assets'));
     }
 
+    public function suppliesReportIndex()
+    {
+        $assets = Assets::all();
+        return view('reports.suppliesReport.index', compact('assets'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

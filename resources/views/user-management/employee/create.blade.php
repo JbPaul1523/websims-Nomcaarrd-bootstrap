@@ -8,6 +8,7 @@
             <div class="modal-body">
                 <form method="POST" action="{{ route('employee.store') }}">
                     @csrf
+
                     <div class="row">
                         <div class="col-md-6">
                             <label>Name:</label>
@@ -23,6 +24,7 @@
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </div>
+
                 </form>
             </div>
         </div>

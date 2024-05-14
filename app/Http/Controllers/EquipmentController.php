@@ -24,6 +24,14 @@ class EquipmentController extends Controller
         return view(' items.equipment.index', compact('equipments','employees', 'categories'));
     }
 
+    public function equipmentReportIndex()
+    {
+        $equipments = Equipment::all();
+        $employees = Employee::all();
+        $categories = Category::all();
+        return view('reports.equipmentReport.index', compact('equipments','employees', 'categories'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

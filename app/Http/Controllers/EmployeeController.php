@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Models\Equipment;
+use Carbon\Carbon;
 
 class EmployeeController extends Controller
 {
@@ -15,7 +16,8 @@ class EmployeeController extends Controller
     {
         $employees = Employee::all(); // Use the correct model name
         $equipments = Equipment::all();
-        return view('user-management.employee.index', compact( 'employees','equipments'));
+        $currentTime = Carbon::now();
+        return view('user-management.employee.index', compact( 'employees','equipments','currentTime'));
     }
 
     /**

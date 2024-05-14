@@ -65,4 +65,18 @@ class UserController extends Controller
     {
         //
     }
+
+
+
+    public function activate(User $user)
+    {
+        $user->activate();
+        return redirect()->back()->with('success', 'User activated successfully.');
+    }
+
+    public function deactivate(User $user)
+    {
+        $user->deactivate();
+        return redirect()->back()->with('success', 'User deactivated successfully.');
+    }
 }
