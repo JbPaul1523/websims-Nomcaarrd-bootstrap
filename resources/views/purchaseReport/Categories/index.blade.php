@@ -1,30 +1,29 @@
 @extends('layout.app')
-@section('pagetitle', 'Purchase Reports')
+@section('pagetitle', 'Purchase Reports Categories')
 
 @section('mainbody')
     <div class="container">
         <div class="row">
             <!-- Button to trigger modal -->
-            <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addPrModal">
-                <i class="fa fa-plus"></i> Add Report
-            </button>
+            <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addPrCategoryModal">
+                <i class="fa fa-plus"></i> Add Category
 
             <!-- Modal for adding new Equipment -->
-            @include('reports.purchaseReport.create')
+            @include('purchaseReport.Categories.create')
 
             <!-- Equipment list -->
-            <div class="col-md-12 col-md-offset-1">
+            {{-- <div class="col-md-12 col-md-offset-1">
                 <table id="mytable" class="table table-bordered table-responsive table-striped">
                     <thead>
                         <th>Pr No.</th>
                         <th>Name</th>
                         <th>Description</th>
-                        <th>Category</th>
+                        <th>Category</th> --}}
                         {{-- <th>Supplies</th>
                         <th>Category</th>
                         <th>Employee</th>
                         <th>Equipments</th> --}}
-                        <th>Create at</th>
+                        {{-- <th>Create at</th>
                         <th>Updated at</th>
                     </thead>
                     <tbody>
@@ -35,7 +34,7 @@
                                 <td>{{ $purchaseReport->description }}</td>
                                 <td>{{ $purchaseReport->category}}</td>
                                 <td>{{ $purchaseReport->created_at}}</td>
-                                <td>{{ $purchaseReport->updated_at}}</td>
+                                <td>{{ $purchaseReport->updated_at}}</td> --}}
 
                                 {{-- <td>{{ $purchaseReport->asset_id }}</td>
                                 <td>{{ $purchaseReport->category_id }}</td>
@@ -72,7 +71,7 @@
                                     @include('items.equipment.delete')
                                     @include('items.equipment.edit')
                                 </td> --}}
-                            </tr>
+                            {{-- </tr>
                         @endforeach
                         @if (session('success'))
                             <div class="alert alert-success">
@@ -87,7 +86,7 @@
                         @endif
                     </tbody>
 
-                </table>
+                </table> --}}
 
             </div>
         </div>

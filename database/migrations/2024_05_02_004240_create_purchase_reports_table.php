@@ -17,12 +17,24 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('pr_no')->unique();
             $table->string('name');
-            $table->string('description');
-            $table->enum('category', ['equipment','supplies']);
-            $table->foreignId('asset_id')->nullable()->constrained('assets')->onDelete('set null');
-            $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('set null');
-            $table->foreignId('employee_id')->nullable()->constrained('employees')->onDelete('set null');
-            $table->foreignId('equipment_id')->nullable()->constrained('equipments')->onDelete('set null');
+            $table->string('fund_cluster');
+            $table->string('purpose');
+
+            // Foreign key for pr_categories
+
+            // $table->foreign('category_id')->references('id')->on('pr_categories')->onDelete('cascade');
+            $table->foreignId('pr_categories_id')->nullable()->constrained('pr_categories')->onDelete('set null');
+
+            // Foreign key for pr_items
+
+            // $table->foreign('items_id')->references('id')->on('pr_items')->onDelete('cascade');
+            $table->foreignId('pr_items_id')->nullable()->constrained('pr_items')->onDelete('set null');
+
+            // Foreign key for pr_signatories
+
+            // $table->foreign('signatories_id')->references('id')->on('pr_signatories')->onDelete('set Null');
+            $table->foreignId('pr_signatories_id')->nullable()->constrained('pr_signatories')->onDelete('set null');
+
             $table->timestamps();
 
             // Indexes (add indexes based on your application's needs)
@@ -31,7 +43,7 @@ return new class extends Migration
         });
 
         // Migration Documentation
-        // This migration creates the purchase_reports table to store purchase reports.
+        // This migration creates the purchase_reports table to store purchase reports with references to categories, items, and signatories.
     }
 
     /**
@@ -41,6 +53,12 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::table('purchase_reports', function (Blueprint $table) {
+            $table->dropForeign(['category_id']);
+            $table->dropForeign(['item_id']);
+            $table->dropForeign(['signatory_id']);
+        });
+
         Schema::dropIfExists('purchase_reports');
     }
 };

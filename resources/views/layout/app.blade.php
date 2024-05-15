@@ -19,9 +19,7 @@
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     {{-- Bootstrap 5 --}}
-    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> --}}
-    <!-- DataTables CSS -->
-    {{-- <link rel="stylesheet" href="//cdn.datatables.net/2.0.2/css/dataTables.dataTables.min.css"> --}}
+
     <link rel="stylesheet" href="DataTables\datatables.min.css">
 
     <!-- jQuery -->
@@ -110,7 +108,7 @@
                             <a href="" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
-                                    ITEMS
+                                    INVENTORY
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -137,6 +135,41 @@
                         </li>
                         <li class="nav-item">
                             <a href="" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    PURCHASE REPORT
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('purchaseReport') }}" class="nav-link">
+                                        <i class="far nav-icon"></i>
+                                        <p>MANAGE PURCHASE REPORT</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('PrSignatory') }}" class="nav-link">
+                                        <i class="far nav-icon"></i>
+                                        <p>SIGNATORIES</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('PrItem') }}" class="nav-link">
+                                        <i class="far nav-icon"></i>
+                                        <p>MANAGE ITEMS</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('PrCategory') }}" class="nav-link">
+                                        <i class="far nav-icon"></i>
+                                        <p>MANAGE CATEGORIES</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link">
                                 <i class="nav-icon fas fa-newspaper"></i>
                                 <p>
                                     REPORTS
@@ -151,17 +184,12 @@
                                     </a> --}}
                                 </li>
                                 <li class="nav-item">
-                                 {{--    <a href="{{ route('supplyReport') }}" class="nav-link">
+                                    {{-- <a href="{{ route('supplyReport') }}" class="nav-link"> --}}
                                         <i class="far nav-icon"></i>
                                         <p>SUPPLY REPORT</p>
-                                    </a> --}}
+                                    {{-- </a> --}}
                                 </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('purchaseReport') }}" class="nav-link">
-                                        <i class="far nav-icon"></i>
-                                        <p>PURCHASE REPORT</p>
-                                    </a>
-                                </li>
+
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -172,16 +200,16 @@
                                 </p>
                             </a>
                             <div class="button" aria-labelledby="">
-                              {{--   <a class="" href="{{ route('logout') }}"
+                                <a class="" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
-                                </a> --}}
+                                </a>
 
-                                {{-- <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                     class="d-none">
                                     @csrf
-                                </form> --}}
+                                </form>
                             </div>
                         </li>
                     </ul>

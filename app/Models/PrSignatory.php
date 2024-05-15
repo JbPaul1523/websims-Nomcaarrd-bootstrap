@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes; // Optional: If you need soft deletes
 
-class PurchaseReport extends Model
+class PrSignatory extends Model
 {
     // Optional: Use soft deletes trait
     // use SoftDeletes;
@@ -15,7 +15,7 @@ class PurchaseReport extends Model
      *
      * @var string
      */
-    protected $table = 'purchase_reports';
+    protected $table = 'pr_signatories';
 
     /**
      * The attributes that are mass assignable.
@@ -23,13 +23,8 @@ class PurchaseReport extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'pr_no',
         'name',
-        'fund_cluster',
-        'purpose',
-        'pr_categories_id',
-        'pr_items_id',
-        'pr_signatories_id',
+        'position'
     ];
 
     /**
@@ -41,28 +36,20 @@ class PurchaseReport extends Model
         // Define attributes that should be hidden
     ];
 
-    /**
-     * Get the category associated with the purchase report.
-     */
-    public function category()
+    public static function getPosition()
     {
-        return $this->belongsTo('App\Models\PrCategory', 'pr_categories_id');
+        return [
+            'NOMCAARRD Director'=> 'NOMCAARRD Director',
+            'University President' => 'University President',
+        ];
     }
 
     /**
-     * Get the items associated with the purchase report.
+     * Get the purchase reports associated with the signatory.
      */
-    public function items()
+    public function purchaseReports()
     {
-        return $this->belongsTo('App\Models\PrItem', 'pr_items_id');
-    }
-
-    /**
-     * Get the signatories associated with the purchase report.
-     */
-    public function signatories()
-    {
-        return $this->belongsTo('App\Models\PrSignatory', 'pr_signatories_id');
+        return $this->hasMany(PurchaseReport::class, 'pr_signatories_id');
     }
 
     /**

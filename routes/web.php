@@ -12,6 +12,10 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AssetsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\PrCategoryController;
+use App\Http\Controllers\PrItemController;
+use App\Http\Controllers\PrSignatoryController;
+
 use Illuminate\Support\Facades\Auth;
 
 
@@ -27,7 +31,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('welcome');
 });
 
 Auth::routes();
@@ -118,4 +122,25 @@ Route::get('employee/equipment/report/{id}', [EmployeeController::class, 'printP
     //Route for Handling the Supplies Report
     Route::get('/reportsupply', [AssetsController::class, 'suppliesReportIndex'])->name('supplyReport');
     Route::get('/reportequipment', [EquipmentController::class, 'equipmentReportIndex'])->name('equipmentReport');
+
 // });
+// Route::get('/PurchaseReport', [PurchaseReportController::class, 'index'])->name('PurchaseReport');
+
+
+Route::get('/PurchaseReportSignatory', [PrSignatoryController::class, 'index'])->name('PrSignatory');
+Route::get('/PurchaseReportSignatory/create', [PrSignatoryController::class, 'create'])->name('PrSignatory.create');
+Route::post('/PurchaseReportSignatory', [PrSignatoryController::class, 'store'])->name('PrSignatory.store');
+Route::put('/PurchaseReportSignatory/{id}/update', [PrSignatoryController::class, 'update'])->name('PrSignatory.update');
+Route::get('/PurchaseReportSignatory/{id}/update', [PrSignatoryController::class, 'edit'])->name('PrSignatory.edit');
+Route::delete('/PurchaseReportSignatory/{id}', [PrSignatoryController::class, 'destroy'])->name('PrSignatory.destroy');
+
+Route::get('/PurchaseReportCategory', [PrCategoryController::class, 'index'])->name('PrCategory');
+Route::get('/PurchaseReportCategory/create',[PrCategoryController::class,'create'])->name('PrCateogry.create');
+Route::post('/PurchaseReportCategory', [PrCategoryController::class, 'store'])->name('PrCategory.store');
+
+Route::get('/PurchaseReportItems', [PrItemController::class, 'index'])->name('PrItem');
+Route::get('/PurchaseReportItems/create', [PrItemController::class, 'create'])->name('PrItem.create');
+Route::post('/PurchaseReportItems', [PrItemController::class, 'store'])->name('PrItem.store');
+Route::put('/PurchaseReportItems/{id}/update', [PrItemController::class, 'update'])->name('PrItem.update');
+Route::get('/PurchaseReportItems/{id}/update', [PrItemController::class, 'edit'])->name('PrItem.edit');
+Route::delete('/PurchaseReportItems/{id}', [PrItemController::class, 'destroy'])->name('PrItem.destroy');
