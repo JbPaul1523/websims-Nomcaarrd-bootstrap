@@ -53,9 +53,9 @@ class HomeController extends Controller
         $employee = Employee::withCount('equipments')->get();
 
         $label = $employee->pluck('name');
-        $values = $employee->sum('equipments_count');
+        $values = $employee->pluck('equipments_count')->toArray();
 
-
+        //dd( $values);
 
         return view('dashboard.index', compact(
             'userCount',
