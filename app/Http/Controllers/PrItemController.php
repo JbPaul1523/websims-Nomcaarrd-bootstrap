@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PrItem;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class PrItemController extends Controller
 {
@@ -36,6 +37,7 @@ class PrItemController extends Controller
             'name' => 'required',
             'description' => 'required',
             'price' => 'required|numeric',
+            'itemcategory'=> ['required', Rule::in(['supply', 'services', 'equipment'])],
             'unit' => 'required'
         ]);
 
@@ -58,6 +60,7 @@ class PrItemController extends Controller
      */
     public function edit($id)
     {
+        $item = PrItem::findOrFail($id);
         return view('purchaseReport.Items.edit', compact('item'));
     }
 
@@ -71,6 +74,7 @@ class PrItemController extends Controller
             'name' => 'required',
             'description' => 'required',
             'price' => 'required|numeric',
+            'itemcategory'=> ['required', Rule::in(['supply', 'equipment', 'services'])],
             'unit' => 'required'
         ]);
 

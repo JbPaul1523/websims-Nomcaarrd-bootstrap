@@ -145,7 +145,7 @@
                                 <li class="nav-item">
                                     <a href="{{ route('purchaseReport') }}" class="nav-link">
                                         <i class="far nav-icon"></i>
-                                        <p>MANAGE PURCHASE REPORT</p>
+                                        <p>MANAGE PR</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -178,16 +178,16 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                {{--     <a href="{{ route('equipmentReport') }}" class="nav-link">
+                                    <a href="{{ route('equipmentReport') }}" class="nav-link">
                                         <i class="far nav-icon"></i>
                                         <p>EQUIPMENTS REPORT</p>
-                                    </a> --}}
+                                    </a>
                                 </li>
                                 <li class="nav-item">
-                                    {{-- <a href="{{ route('supplyReport') }}" class="nav-link"> --}}
+                                    <a href="{{ route('supplyReport') }}" class="nav-link">
                                         <i class="far nav-icon"></i>
                                         <p>SUPPLY REPORT</p>
-                                    {{-- </a> --}}
+                                    </a>
                                 </li>
 
                             </ul>

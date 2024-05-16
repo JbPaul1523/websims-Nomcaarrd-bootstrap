@@ -81,7 +81,7 @@ class WeeklyReport extends Command
         $filename = 'weekly_report_' . $startDate->format('Y-m-d') . '_to_' . $endDate->format('Y-m-d') . '_' . $timeStamp . '.html';
 
         // Save the HTML report to storage
-        $storagePath = 'reports/' . $filename;
+        $storagePath = 'reports/WeeklyReport' . $filename;
         Storage::put($storagePath, $htmlContent);
 
         // Display a success message

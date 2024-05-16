@@ -13,6 +13,16 @@
                             <label for="name">Name:</label>
                             <input type="text" class="form-control" name="name" required>
                         </div>
+
+                        <div class="col-md-6">
+                            <label>Category</label>
+                            <select class="form-control" name="itemcategory" required>
+                                @foreach (\App\Models\PrItem::getPrItemCategory() as $value => $label)
+                                    <option value="{{ $value }}">{{ $label }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <div class="col-md-6">
                             <label for="name">Description</label>
                             <input type="text" class="form-control" name="description" required>

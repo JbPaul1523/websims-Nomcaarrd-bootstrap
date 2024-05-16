@@ -44,10 +44,10 @@ class PurchaseReport extends Model
     /**
      * Get the category associated with the purchase report.
      */
-    public function category()
-    {
-        return $this->belongsTo('App\Models\PrCategory', 'pr_categories_id');
-    }
+    // public function category()
+    // {
+    //     return $this->belongsTo('App\Models\PrCategory', 'pr_categories_id');
+    // }
 
     /**
      * Get the items associated with the purchase report.
@@ -55,6 +55,15 @@ class PurchaseReport extends Model
     public function items()
     {
         return $this->belongsTo('App\Models\PrItem', 'pr_items_id');
+    }
+
+    public static function getCategory()
+    {
+        return [
+            'supply'=> 'Supply',
+            'equipment' => 'Equipment',
+            'services' => 'Services'
+        ];
     }
 
     /**

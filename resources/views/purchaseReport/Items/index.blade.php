@@ -21,6 +21,7 @@
                         <th>Name</th>
                         <th>Description</th>
                         <th>Price</th>
+                        <th>Category</th>
                         <th>Unit</th>
                         <th>Action</th>
                     </thead>
@@ -31,6 +32,7 @@
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->description }}</td>
                                 <td>{{ $item->price }}</td>
+                                <td>{{$item->itemcategory}}</td>
                                 <td>{{ $item->unit }}</td>
 
 

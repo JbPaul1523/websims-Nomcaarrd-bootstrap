@@ -25,14 +25,14 @@
 
                     </thead>
                     <tbody>
-                        @foreach ($assets as $supply)
+                        {{-- @foreach ($assets as $supply)
                             <tr>
                                 <td>{{ $supply->id }}</td>
                                 <td>{{ $supply->name }}</td>
                                 <td>{{ $supply->description }}</td>
                                 <td>{{ $supply->amount }}</td>
                                 <td>{{ $supply->stock }}</td>
-                                <td>{{ $supply->date_acquired }}</td>
+                                <td>{{ $supply->date_acquired }}</td> --}}
                                 {{-- <td>
                                     This is the button for users edit and delete
                                     <a href="#edit{{ $supply->id }}" data-bs-toggle="modal" class="btn btn-success"><i
@@ -42,8 +42,8 @@
                                     @include('items.supplies.delete')
                                     @include('items.supplies.edit')
                                 </td> --}}
-                            </tr>
-                        @endforeach
+                            {{-- </tr>
+                        @endforeach --}}
                         @if (session('success'))
                             <div class="alert alert-success">
                                 {{ session('success') }}

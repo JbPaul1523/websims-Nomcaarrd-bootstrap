@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\PurchaseReport;
+use App\Models\PrItem;
+use App\Models\PrSignatory;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class PurchaseReportController extends Controller
 {
@@ -14,7 +17,9 @@ class PurchaseReportController extends Controller
     public function index()
     {
         $purchaseReports = PurchaseReport::all();
-        return view('purchaseReport.index', compact('purchaseReports'));
+        $prItem = PrItem::all();
+        $prSignatory = PrSignatory::all();
+        return view('purchaseReport.ManagePr.index', compact('purchaseReports', 'prItem', 'prSignatory'));
     }
 
     /**
@@ -23,7 +28,10 @@ class PurchaseReportController extends Controller
      */
     public function create()
     {
-        return view('purchaseReports.create');
+        $purchaseReport = PurchaseReport::all();
+        $prItems = PrItem::all();
+
+        return view('purchaseReport.ManagePr.create', compact('purchaseReport','prItem'));
     }
 
     /**
@@ -37,13 +45,24 @@ class PurchaseReportController extends Controller
             'name' => 'required',
             'fund_cluster' => 'required',
             'purpose' => 'required',
-            'pr_categories_id' => 'nullable|exists:pr_categories,id',
-            'pr_items_id' => 'nullable|exists:pr_items,id',
-            'pr_signatories_id' => 'nullable|exists:pr_signatories,id',
+            'category'=> ['required', Rule::in(['supply', 'services', 'equipment'])],
+            'pr_items_id' => 'nullable|array',
+            'pr_items_id.*' => 'exists:pr_items,id',
+            'pr_signatories_id' => 'nullable|array',
+            'pr_signatories_id.*' => 'exists:pr_signatories,id',
         ]);
 
+        $purchaseReport = PurchaseReport::create($request->except(['pr_items_id', 'pr_signatories_id']));
+
+        if ($request->has('pr_items_id')) {
+            $purchaseReport->items()->attach($request->pr_items_id);
+        }
+        if ($request->has('pr_signatories_id')) {
+            $purchaseReport->signatories()->attach($request->pr_signatories_id);
+        }
+
         PurchaseReport::create($request->all());
-        return redirect()->route('purchaseReports.index')->with('success','Purchase report created successfully.');
+        return redirect()->route('purchaseReports')->with('success','Purchase report created successfully.');
     }
 
     /**
@@ -71,14 +90,25 @@ class PurchaseReportController extends Controller
     public function update(Request $request, PurchaseReport $purchaseReport)
     {
         $request->validate([
-            'pr_no' => 'required|unique:purchase_reports,pr_no,' . $purchaseReport->id,
+            'pr_no' => 'required|unique:purchase_reports',
             'name' => 'required',
             'fund_cluster' => 'required',
             'purpose' => 'required',
-            'pr_categories_id' => 'nullable|exists:pr_categories,id',
-            'pr_items_id' => 'nullable|exists:pr_items,id',
-            'pr_signatories_id' => 'nullable|exists:pr_signatories,id',
+            'category'=> ['required', Rule::in(['supply', 'services', 'equipment'])],
+            'pr_items_id' => 'nullable|array',
+            'pr_items_id.*' => 'exists:pr_items,id',
+            'pr_signatories_id' => 'nullable|array',
+            'pr_signatories_id.*' => 'exists:pr_signatories,id',
         ]);
+
+        $purchaseReport = PurchaseReport::create($request->except(['pr_items_id', 'pr_signatories_id']));
+
+        if ($request->has('pr_items_id')) {
+            $purchaseReport->items()->attach($request->pr_items_id);
+        }
+        if ($request->has('pr_signatories_id')) {
+            $purchaseReport->signatories()->attach($request->pr_signatories_id);
+        }
 
         $purchaseReport->update($request->all());
         return redirect()->route('purchaseReports.index')->with('success','Purchase report updated successfully.');

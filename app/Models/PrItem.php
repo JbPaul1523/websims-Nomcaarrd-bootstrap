@@ -26,6 +26,7 @@ class PrItem extends Model
         'name',
         'description',
         'price',
+        'itemcategory',
         'unit'
     ];
 
@@ -49,4 +50,12 @@ class PrItem extends Model
     /**
      * Any additional methods you need for business logic here...
      */
+    public static function getPrItemCategory()
+    {
+        return [
+            'supply'=> 'Supply',
+            'equipment' => 'Equipment',
+            'services' => 'Services'
+        ];
+    }
 }

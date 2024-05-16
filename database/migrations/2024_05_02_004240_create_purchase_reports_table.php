@@ -17,13 +17,14 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('pr_no')->unique();
             $table->string('name');
+            $table->enum('category',['supply', 'services','equipment']);
             $table->string('fund_cluster');
             $table->string('purpose');
 
             // Foreign key for pr_categories
 
             // $table->foreign('category_id')->references('id')->on('pr_categories')->onDelete('cascade');
-            $table->foreignId('pr_categories_id')->nullable()->constrained('pr_categories')->onDelete('set null');
+
 
             // Foreign key for pr_items
 
