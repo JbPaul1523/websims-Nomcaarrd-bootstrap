@@ -74,7 +74,7 @@
                 </div>
                 &nbsp;
                 <div class="container">
-                    <p class="mx-auto"> EQUIPMENT-EMPLOYEE REPORT CHART</p>
+                    <p class="mx-auto"> EQUIPMENT-EMPLOYEE CHART</p>
                     <canvas id="myChart2" width="500" height="250"></canvas>
                 </div>
             </div>
