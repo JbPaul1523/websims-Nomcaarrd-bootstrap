@@ -50,6 +50,18 @@ Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])-
 
 }); */
 
+// routes/web.php
+
+// routes/web.php
+
+// routes/web.php
+
+use App\Http\Controllers\SupplyReportController;
+
+Route::resource('supply_reports', SupplyReportController::class);
+Route::get('supply_reports/{id}/download', [SupplyReportController::class, 'download'])->name('supply_reports.download');
+
+
 
 
 
@@ -134,9 +146,9 @@ Route::put('/PurchaseReportSignatory/{id}/update', [PrSignatoryController::class
 Route::get('/PurchaseReportSignatory/{id}/update', [PrSignatoryController::class, 'edit'])->name('PrSignatory.edit');
 Route::delete('/PurchaseReportSignatory/{id}', [PrSignatoryController::class, 'destroy'])->name('PrSignatory.destroy');
 
-Route::get('/PurchaseReportCategory', [PrCategoryController::class, 'index'])->name('PrCategory');
-Route::get('/PurchaseReportCategory/create',[PrCategoryController::class,'create'])->name('PrCateogry.create');
-Route::post('/PurchaseReportCategory', [PrCategoryController::class, 'store'])->name('PrCategory.store');
+// Route::get('/PurchaseReportCategory', [PrCategoryController::class, 'index'])->name('PrCategory');
+// Route::get('/PurchaseReportCategory/create',[PrCategoryController::class,'create'])->name('PrCateogry.create');
+// Route::post('/PurchaseReportCategory', [PrCategoryController::class, 'store'])->name('PrCategory.store');
 
 Route::get('/PurchaseReportItems', [PrItemController::class, 'index'])->name('PrItem');
 Route::get('/PurchaseReportItems/create', [PrItemController::class, 'create'])->name('PrItem.create');

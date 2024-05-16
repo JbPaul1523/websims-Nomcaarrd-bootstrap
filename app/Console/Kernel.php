@@ -14,8 +14,8 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->command('generate:weekly-report')->everyMinute();
-        $schedule->command('generate:monthly-report')->everyTwoMinutes();
-        $schedule->command('generate:annual-report')->everyThreeMinutes();
+        // $schedule->command('generate:monthly-report')->everyTwoMinutes();
+        // $schedule->command('generate:annual-report')->everyThreeMinutes();
     }
 
     /**
