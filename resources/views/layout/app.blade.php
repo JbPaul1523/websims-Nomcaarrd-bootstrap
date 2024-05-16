@@ -160,12 +160,12 @@
                                         <p>MANAGE ITEMS</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a href="{{ route('PrCategory') }}" class="nav-link">
                                         <i class="far nav-icon"></i>
                                         <p>MANAGE CATEGORIES</p>
                                     </a>
-                                </li>
+                                </li> --}}
                             </ul>
                         </li>
                         <li class="nav-item">

@@ -46,10 +46,7 @@ class PurchaseReportController extends Controller
             'fund_cluster' => 'required',
             'purpose' => 'required',
             'category'=> ['required', Rule::in(['supply', 'services', 'equipment'])],
-            'pr_items_id' => 'nullable|array',
-            'pr_items_id.*' => 'exists:pr_items,id',
-            'pr_signatories_id' => 'nullable|array',
-            'pr_signatories_id.*' => 'exists:pr_signatories,id',
+
         ]);
 
         $purchaseReport = PurchaseReport::create($request->except(['pr_items_id', 'pr_signatories_id']));

@@ -5,7 +5,7 @@
     <div class="container container-fluid">
         <div class="row">
             <div class="col-md-12 col-md-offset-1">
-                <table id="mytable" class="table table-bordered table-responsive table-striped" style="width:100%">
+                <table id="mytable" class="table table-striped table-bordered nowrap" style="width:100%">
                     <thead>
                         <th>Name</th>
                         <th>Email</th>

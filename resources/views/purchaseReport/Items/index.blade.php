@@ -15,7 +15,7 @@
 
             <!-- Equipment list -->
             <div class="col-md-12 col-md-offset-1">
-                <table id="mytable" class="table table-bordered table-responsive table-striped">
+                <table id="mytable" class="table table-striped table-bordered nowrap" style="width:100%">
                     <thead>
                         <th>ID</th>
                         <th>Name</th>

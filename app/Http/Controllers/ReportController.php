@@ -28,6 +28,7 @@ class ReportController extends Controller
      */
     public function create()
     {
+
         $reports = Report::all();
         $employees = Employee::all();
         $assets = Assets::all();
