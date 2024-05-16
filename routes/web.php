@@ -34,6 +34,11 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::get('/templates', function () {
+    /* return view('auth.login'); */
+    return view('PR_template');
+});
+
 Auth::routes();
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 
@@ -134,9 +139,6 @@ Route::put('/PurchaseReportSignatory/{id}/update', [PrSignatoryController::class
 Route::get('/PurchaseReportSignatory/{id}/update', [PrSignatoryController::class, 'edit'])->name('PrSignatory.edit');
 Route::delete('/PurchaseReportSignatory/{id}', [PrSignatoryController::class, 'destroy'])->name('PrSignatory.destroy');
 
-Route::get('/PurchaseReportCategory', [PrCategoryController::class, 'index'])->name('PrCategory');
-Route::get('/PurchaseReportCategory/create',[PrCategoryController::class,'create'])->name('PrCateogry.create');
-Route::post('/PurchaseReportCategory', [PrCategoryController::class, 'store'])->name('PrCategory.store');
 
 Route::get('/PurchaseReportItems', [PrItemController::class, 'index'])->name('PrItem');
 Route::get('/PurchaseReportItems/create', [PrItemController::class, 'create'])->name('PrItem.create');
