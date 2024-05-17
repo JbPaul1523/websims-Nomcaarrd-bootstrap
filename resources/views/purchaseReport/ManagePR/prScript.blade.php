@@ -21,7 +21,7 @@
             function calculateTotalPrice() {
                 if (checkbox.checked) {
                     const total = (quantityInput.value * price).toFixed(2);
-                    totalPriceInput.value = `$${total}`;
+                    totalPriceInput.value = `P${total}`;
                 } else {
                     totalPriceInput.value = '';
                 }
@@ -32,10 +32,10 @@
         function calculateGrandTotal() {
             let grandTotal = 0;
             document.querySelectorAll('.total-cost').forEach(input => {
-                const value = parseFloat(input.value.replace('$', '')) || 0;
+                const value = parseFloat(input.value.replace('P', '')) || 0;
                 grandTotal += value;
             });
-            document.getElementById('grand-total').textContent = `$${grandTotal.toFixed(2)}`;
+            document.getElementById('grand-total').textContent = `P${grandTotal.toFixed(2)}`;
         }
     });
     </script>
@@ -46,8 +46,6 @@
             $('#PRtable').DataTable({
               "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]],
                 order: [[0, 'desc']],
-
-
             });
 
         });

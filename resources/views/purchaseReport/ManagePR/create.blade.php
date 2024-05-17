@@ -7,7 +7,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="">
+                <form method="POST" action="{{ route('purchaseReport.store') }}">
                     @csrf
                     <div class="row" id="categorySelect">
                         <div class="col-md-6">
@@ -57,16 +57,19 @@
                                 @foreach ($prItem as $item)
                                     <tr class="item-container">
                                         <td>
-                                            <input type="checkbox" id="item_{{ $item->id }}" name="items[{{ $item->id }}][checked]">
+                                            <input type="checkbox" id="item_{{ $item->id }}"
+                                                name="items[{{ $item->id }}][checked]">
                                         </td>
                                         <td>
                                             <label for="item_{{ $item->id }}">{{ $item->name }}</label>
                                         </td>
                                         <td>
-                                            <input type="number" class="form-control quantity-input" name="items[{{ $item->id }}][quantity]" min="0" disabled>
+                                            <input type="number" class="form-control quantity-input"
+                                                name="items[{{ $item->id }}][quantity]" min="0" disabled>
                                         </td>
                                         <td>
-                                            <span class="item-price" data-price="{{ $item->price }}">${{ number_format($item->price, 2) }}</span>
+                                            <span class="item-price"
+                                                data-price="{{ $item->price }}">P{{ number_format($item->price, 2) }}</span>
                                         </td>
                                         <td>
                                             <input type="text" class="form-control total-cost" readonly>
@@ -77,7 +80,7 @@
                             <tfoot>
                                 <tr>
                                     <td colspan="4" style="text-align:right;"><strong>Grand Total:</strong></td>
-                                    <td><span id="grand-total">$0.00</span></td>
+                                    <td><span id="grand-total">P0.00</span></td>
                                 </tr>
                             </tfoot>
                         </table>

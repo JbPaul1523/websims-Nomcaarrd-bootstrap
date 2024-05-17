@@ -77,4 +77,8 @@ class PurchaseReport extends Model
     /**
      * Any additional methods you need for business logic here...
      */
+
+     public function itemList(){
+        return $this->hasMany(PRListOfItems::class, 'pr_id', 'id');
+     }
 }
