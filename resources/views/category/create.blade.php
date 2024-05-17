@@ -15,13 +15,7 @@
                         </div>
 
                     </div>
-                    {{-- <div class="row">
-                        <div class="col-md-6">
-                            <label>Category for:</label>
-                            <input type="radio" class="form-control" name="name" required>
-                        </div> --}}
 
-                    </div>
                     <div class="row mt-3">
                         <div class="col-md-12">
                             <button type="submit" class="btn btn-primary">Submit</button>

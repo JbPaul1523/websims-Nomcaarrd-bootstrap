@@ -135,6 +135,30 @@
                         </li>
                         <li class="nav-item">
                             <a href="" class="nav-link">
+                                <i class="nav-icon fas fa-newspaper"></i>
+                                <p>
+                                    REPORTS
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('equipment_reports.index') }}" class="nav-link">
+                                        <i class="far nav-icon"></i>
+                                        <p>EQUIPMENTS REPORT</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('supply_reports.index') }}" class="nav-link">
+                                        <i class="far nav-icon"></i>
+                                        <p>SUPPLY REPORT</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
                                     PURCHASE REPORT
@@ -168,49 +192,18 @@
                                 </li> --}}
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a href="" class="nav-link">
-                                <i class="nav-icon fas fa-newspaper"></i>
-                                <p>
-                                    REPORTS
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('equipment_reports.index') }}" class="nav-link">
-                                        <i class="far nav-icon"></i>
-                                        <p>EQUIPMENTS REPORT</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('supply_reports.index') }}" class="nav-link">
-                                        <i class="far nav-icon"></i>
-                                        <p>SUPPLY REPORT</p>
-                                    </a>
-                                </li>
 
-                            </ul>
-                        </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">
-                                <i class="nav-icon fa fa-id-card"></i>
-                                <p>
-                                    PROFILE
-                                </p>
-                            </a>
-                            <div class="button" aria-labelledby="">
-                                <a class="" href="{{ route('logout') }}"
+                            <a class="nav-link" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                     class="d-none">
                                     @csrf
                                 </form>
-                            </div>
+
                         </li>
                     </ul>
                 </nav>
