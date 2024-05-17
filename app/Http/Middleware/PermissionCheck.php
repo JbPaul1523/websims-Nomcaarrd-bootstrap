@@ -18,7 +18,7 @@ class PermissionCheck
     public function handle(Request $request, Closure $next, ...$roles)
     {
         if(Auth::check()){
-            $roles = auth()->user()->access;
+            $roles = auth()->user()->role;
             foreach($roles as $role){
                 if($role >= $roles){
                     return $next($request);
