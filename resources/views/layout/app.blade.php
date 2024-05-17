@@ -178,13 +178,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('equipmentReport') }}" class="nav-link">
+                                    <a href="{{ route('equipment_reports.index') }}" class="nav-link">
                                         <i class="far nav-icon"></i>
                                         <p>EQUIPMENTS REPORT</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('supplyReport') }}" class="nav-link">
+                                    <a href="{{ route('supply_reports.index') }}" class="nav-link">
                                         <i class="far nav-icon"></i>
                                         <p>SUPPLY REPORT</p>
                                     </a>
@@ -283,16 +283,6 @@
 
 
             });
-
-            $('#reportTable').DataTable({
-                "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]],
-                order: [[0, 'desc']],
-                dom: 'Bfrtip',
-                buttons: ['print'],
-
-            })
-
-            // Initialize DataTable for #showEmployee on document ready
 
         });
     </script>

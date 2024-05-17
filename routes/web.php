@@ -15,6 +15,8 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\PrCategoryController;
 use App\Http\Controllers\PrItemController;
 use App\Http\Controllers\PrSignatoryController;
+use App\Http\Controllers\EquipmentReportController;
+use App\Http\Controllers\SupplyReportController;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -61,10 +63,22 @@ Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])-
 
 // routes/web.php
 
-use App\Http\Controllers\SupplyReportController;
+
 
 Route::resource('supply_reports', SupplyReportController::class);
 Route::get('supply_reports/{id}/download', [SupplyReportController::class, 'download'])->name('supply_reports.download');
+Route::get('get-supply-reports', [SupplyReportController::class, 'getReports'])->name('supply_reports.getReports');
+
+
+// routes/web.php
+
+
+
+Route::resource('equipment_reports', EquipmentReportController::class);
+Route::get('equipment_reports/{id}/download', [EquipmentReportController::class, 'download'])->name('equipment_reports.download');
+Route::get('get-equipment-reports', [EquipmentReportController::class, 'getReports'])->name('equipment_reports.getReports');
+
+
 
 
 
@@ -137,8 +151,8 @@ Route::get('employee/equipment/report/{id}', [EmployeeController::class, 'printP
 
 
     //Route for Handling the Supplies Report
-    Route::get('/reportsupply', [AssetsController::class, 'suppliesReportIndex'])->name('supplyReport');
-    Route::get('/reportequipment', [EquipmentController::class, 'equipmentReportIndex'])->name('equipmentReport');
+    // Route::get('/reportsupply', [AssetsController::class, 'suppliesReportIndex'])->name('supplyReport');
+    // Route::get('/reportequipment', [EquipmentController::class, 'equipmentReportIndex'])->name('equipmentReport');
 
 // });
 // Route::get('/PurchaseReport', [PurchaseReportController::class, 'index'])->name('PurchaseReport');

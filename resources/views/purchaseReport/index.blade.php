@@ -14,7 +14,7 @@
 
             <!-- Equipment list -->
             <div class="col-md-12 col-md-offset-1">
-                <table id="mytable" class="table table-striped table-bordered nowrap" style="width:100%">
+                <table id="PRtable" class="table table-striped table-bordered nowrap" style="width:100%">
                     <thead>
                         <th>Pr No.</th>
                         <th>Name</th>
@@ -92,6 +92,18 @@
             </div>
         </div>
     </div>
+    <script>
+        // Initialize All Tables
+        $(document).ready(function() {
+            // Initialize DataTable for #mytable
+            $('#PRtable').DataTable({
+              "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]],
+                order: [[0, 'desc']],
 
+
+            });
+
+        });
+    </script>
 
 @endsection

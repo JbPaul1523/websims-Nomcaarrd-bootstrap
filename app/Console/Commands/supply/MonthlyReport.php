@@ -1,20 +1,21 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\supply;
 
-use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Assets;
+use App\Models\SupplyReport; // Include the SupplyReport model
+use Illuminate\Console\Command; // Include the SupplyReport model
 
-class AnnualReport extends Command
+class MonthlyReport extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'generate:annual-report';
+    protected $signature = 'generate:supply-monthly-report';
 
     /**
      * The console command description.
@@ -26,23 +27,19 @@ class AnnualReport extends Command
     /**
      * Execute the console command.
      *
-     * @return int
+     * @return void
      */
     public function handle(): void
     {
-        $startDate = now()->startOfWeek();
-        $endDate = now()->endOfWeek();
-
-
-
+        $startDate = now()->startOfMonth();
+        $endDate = now()->endOfMonth();
         $suppliesReport = Assets::all();
         $timeStamp = now()->timestamp;
 
-
         $htmlContent = '
         <div>
-        <p style="font-size:1.25rem; font-weight: 700"> NOMCAARRD Supplies Report as of'. $timeStamp .
-        '</div>
+        <p style="font-size:1.25rem; font-weight: 700"> NOMCAARRD Supplies Report as of '. $timeStamp .'
+        </div>
             <div style="width: 100%;">
                         <table border="1" style="border-collapse: collapse; width:100%">
                     <thead>
@@ -51,7 +48,7 @@ class AnnualReport extends Command
                             <th>Name</th>
                             <th>Description</th>
                             <th>Amount</th>
-                            <th>Available Stock</th>
+                            <th>Stock</th>
                             <th>Date Acquired</th>
                         </tr>
                     </thead>
@@ -69,16 +66,16 @@ class AnnualReport extends Command
                 $htmlContent .= '</tbody></table></div>
         ';
 
-
-
-        // Generate the filename based on the start and end dates of the week
-        $filename = 'annual_report_' . $startDate->format('Y-m-d') . '_to_' . $endDate->format('Y-m-d') . '_' . $timeStamp . '.html';
-
-        // Save the HTML report to storage
-        $storagePath = 'reports/AnnualReport' . $filename;
+        $filename = 'monthly_supply_report_' . $startDate->format('Y-m-d') . '_to_' . $endDate->format('Y-m-d') . '_' . $timeStamp . '.html';
+        $storagePath = 'reports/supplyreport/' . $filename;
         Storage::put($storagePath, $htmlContent);
 
-        // Display a success message
-        $this->info('Annual report generated successfully.');
+        // Save the report metadata to the database
+        SupplyReport::create([
+            'file_name' => $filename,
+            'file_path' => $storagePath,
+        ]);
+
+        $this->info('Monthly report generated successfully.');
     }
 }

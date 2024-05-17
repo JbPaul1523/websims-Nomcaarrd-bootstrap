@@ -39,3 +39,16 @@
         }
     });
     </script>
+    <script>
+        // Initialize All Tables
+        $(document).ready(function() {
+            // Initialize DataTable for #mytable
+            $('#PRtable').DataTable({
+              "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]],
+                order: [[0, 'desc']],
+
+
+            });
+
+        });
+    </script>

@@ -1,7 +1,6 @@
 <?php
-// app/Console/Commands/WeeklyReport.php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\supply;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -11,7 +10,7 @@ use Illuminate\Console\Command;
 
 class WeeklyReport extends Command
 {
-    protected $signature = 'generate:weekly-report';
+    protected $signature = 'generate:supply-weekly-report';
     protected $description = 'Command description';
 
     public function handle(): void
@@ -51,8 +50,8 @@ class WeeklyReport extends Command
                 $htmlContent .= '</tbody></table></div>
         ';
 
-        $filename = 'weekly_report_' . $startDate->format('Y-m-d') . '_to_' . $endDate->format('Y-m-d') . '_' . $timeStamp . '.html';
-        $storagePath = 'reports/' . $filename;
+        $filename = 'weekly_supply_report_' . $startDate->format('Y-m-d') . '_to_' . $endDate->format('Y-m-d') . '_' . $timeStamp . '.html';
+        $storagePath = 'reports/supplyreport/' . $filename;
         Storage::put($storagePath, $htmlContent);
 
         // Save the report metadata to the database

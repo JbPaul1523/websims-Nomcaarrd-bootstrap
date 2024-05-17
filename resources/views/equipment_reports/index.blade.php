@@ -1,5 +1,5 @@
 @extends('layout.app')
-@section('pagetitle', 'Supplies Report')
+@section('pagetitle', 'Equipment Reports')
 
 @section('mainbody')
     <div class="container">
@@ -46,13 +46,14 @@
         </div>
     </div>
 
+
     <script>
         $(document).ready(function() {
             var table = $('#reportTable').DataTable();
 
             function loadReports(period) {
                 $.ajax({
-                    url: '{{ route('supply_reports.getReports') }}',
+                    url: '{{ route('equipment_reports.getReports') }}',
                     method: 'GET',
                     data: { period: period },
                     success: function(data) {
@@ -61,10 +62,10 @@
                             table.row.add([
                                 report.id,
                                 report.file_name,
-                                `<a href="/supply_reports/${report.id}/download" class="btn btn-primary">
+                                `<a href="/equipment_reports/${report.id}/download" class="btn btn-primary">
                                     <i class="fa fa-download"></i> Download
                                 </a>
-                                <form action="/supply_reports/${report.id}" method="POST" style="display:inline;">
+                                <form action="/equipment_reports/${report.id}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">
