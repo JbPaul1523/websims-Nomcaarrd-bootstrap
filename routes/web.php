@@ -32,6 +32,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+Auth::routes();
 Route::get('/', function () {
     return view('auth.login');
 });
@@ -41,16 +42,15 @@ Route::get('/templates', function () {
     return view('PR_template');
 });
 
-Auth::routes();
+
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 
-// Routes for registered users with admin access
-Route::middleware(['permission:0', 'auth'])->group(function () {
-    //Users or Employee
+Route::group(['middleware' => ['auth', 'role:0']], function () {
+    // Routes accessible only to authenticated users with the 'user' role
 
+    Route::group(['middleware' => 'role:1'], function () {
+        // Routes accessible only to authenticated users with the 'admin' role
 
-    Route::middleware(['permission:1'])->group(function () {
-        //    Admin or superadmin
 
 
         Route::resource('supply_reports', SupplyReportController::class);
@@ -122,7 +122,7 @@ Route::middleware(['permission:0', 'auth'])->group(function () {
 
         Route::get('/purchaseReport', [PurchaseReportController::class, 'index'])->name('purchaseReport');
         Route::get('/purchaseReport/create', [PurchaseReportController::class, 'create'])->name('purchaseReport.create');
-        Route::post('/purchaseReport', [PurchaseReportController::class, 'store'])->name('purchaseReport.store');
+        Route::post('/purchaseReport/store', [PurchaseReportController::class, 'store'])->name('purchaseReport.store');
         Route::put('/purchaseReport/{id}/update', [PurchaseReportController::class, 'update'])->name('purchaseReport.update');
         Route::get('/purchaseReport/{id}/update', [PurchaseReportController::class, 'edit'])->name('purchaseReport.edit');
         Route::delete('/purchaseReport/{id}', [PurchaseReportController::class, 'destroy'])->name('purchaseReport.destroy');
@@ -151,7 +151,7 @@ Route::middleware(['permission:0', 'auth'])->group(function () {
 
         Route::get('/PurchaseReportItems', [PrItemController::class, 'index'])->name('PrItem');
         Route::get('/PurchaseReportItems/create', [PrItemController::class, 'create'])->name('PrItem.create');
-        Route::post('/PurchaseReportItems', [PrItemController::class, 'store'])->name('PrItem.store');
+        Route::post('/PurchaseReportItems/store', [PrItemController::class, 'store'])->name('PrItem.store');
         Route::put('/PurchaseReportItems/{id}/update', [PrItemController::class, 'update'])->name('PrItem.update');
         Route::get('/PurchaseReportItems/{id}/update', [PrItemController::class, 'edit'])->name('PrItem.edit');
         Route::delete('/PurchaseReportItems/{id}', [PrItemController::class, 'destroy'])->name('PrItem.destroy');
