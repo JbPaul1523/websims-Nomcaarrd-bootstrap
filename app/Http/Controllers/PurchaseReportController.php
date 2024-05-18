@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PurchaseReport;
 use App\Models\PrItem;
+use App\Models\PRListOfItems;
 use App\Models\PrSignatory;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -40,6 +41,7 @@ class PurchaseReportController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'pr_no' => 'required|unique:purchase_reports',
             'name' => 'required',
@@ -48,18 +50,25 @@ class PurchaseReportController extends Controller
             'category' => ['required', Rule::in(['supply', 'services', 'equipment'])],
 
         ]);
+        $items = $request->items;
+        $purchaseReport = PurchaseReport::create([
+            'pr_no' => $request->input('pr_no'),
+            'fund_cluster' =>$request->input('fund_cluster'),
+            'purpose' => $request->input('purpose'),
+        ]);
 
-        $purchaseReport = PurchaseReport::create($request->except(['pr_items_id', 'pr_signatories_id']));
-
-        if ($request->has('pr_items_id')) {
-            $purchaseReport->items()->attach($request->pr_items_id);
+        foreach ($items as $id => $item) {
+            if ($item['checked'] === 'on' && isset($item['quantity'])) {
+                PRListOfItems::create([
+                    'pr_id' => $purchaseReport->id,
+                    'pr_item_id' => $id,
+                    'quantity' => $item['quantity']
+                ]);
+            }
         }
-        if ($request->has('pr_signatories_id')) {
-            $purchaseReport->signatories()->attach($request->pr_signatories_id);
-        }
 
-        PurchaseReport::create($request->all());
-        dd($request->all());
+
+
         return redirect()->route('purchaseReports')->with('success', 'Purchase report created successfully.');
     }
 

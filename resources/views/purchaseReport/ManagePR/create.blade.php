@@ -7,7 +7,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{ route('purchaseReport.store') }}">
+                <form method="POST" action="{{ route('purchase.report') }}">
+                    @method('POST')
                     @csrf
                     <div class="row" id="categorySelect">
                         <div class="col-md-6">

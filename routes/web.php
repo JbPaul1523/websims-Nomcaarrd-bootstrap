@@ -43,10 +43,11 @@ Route::get('/templates', function () {
 });
 
 
-Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 
 Route::group(['middleware' => ['auth', 'role:0']], function () {
     // Routes accessible only to authenticated users with the 'user' role
+
+    Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 
     Route::group(['middleware' => 'role:1'], function () {
         // Routes accessible only to authenticated users with the 'admin' role
@@ -120,12 +121,9 @@ Route::group(['middleware' => ['auth', 'role:0']], function () {
         Route::get('/report', [ReportController::class, 'index'])->name('report');  // show report page
         Route::get('/report/create', [ReportController::class, 'create'])->name('report.create');
 
-        Route::get('/purchaseReport', [PurchaseReportController::class, 'index'])->name('purchaseReport');
-        Route::get('/purchaseReport/create', [PurchaseReportController::class, 'create'])->name('purchaseReport.create');
-        Route::post('/purchaseReport/store', [PurchaseReportController::class, 'store'])->name('purchaseReport.store');
-        Route::put('/purchaseReport/{id}/update', [PurchaseReportController::class, 'update'])->name('purchaseReport.update');
-        Route::get('/purchaseReport/{id}/update', [PurchaseReportController::class, 'edit'])->name('purchaseReport.edit');
-        Route::delete('/purchaseReport/{id}', [PurchaseReportController::class, 'destroy'])->name('purchaseReport.destroy');
+        // Purchase Report
+        Route::get('purchaseReport', [PurchaseReportController::class, 'index'])->name('purchaseReport');
+        Route::post('purchase/report/store', [PurchaseReportController::class, 'store'])->name('purchase.report');
 
 
         // Route for printing reports
