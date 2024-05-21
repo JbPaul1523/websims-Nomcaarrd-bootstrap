@@ -34,11 +34,11 @@
                     </div>
                     {{-- <div class="col-md-6">
                         <label>Assigned to:</label>
-                        <p>{{ $equipment->employee->name }}</p>
+                        <p>{{ $equipment->employees_id->name }}</p>
                     </div>
                     <div class="col-md-6">
                         <label>Assigned to Category:</label>
-                        <p>{{ $equipment->category->name }}</p>
+                        <p>{{ $equipment->categories_id->name }}</p>
                     </div> --}}
                 </div>
             </div>

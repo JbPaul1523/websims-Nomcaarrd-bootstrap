@@ -38,8 +38,11 @@ Route::get('/', function () {
 });
 
 Route::get('/templates', function () {
-    /* return view('auth.login'); */
+
     return view('PR_template');
+});
+Route::get('/sample', function () {
+    return view('profile.edit');
 });
 
 
@@ -48,6 +51,10 @@ Route::group(['middleware' => ['auth', 'role:0']], function () {
     // Routes accessible only to authenticated users with the 'user' role
 
     Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+    Route::get('/profile', [UserController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile/update-info', [UserController::class, 'updateInfo'])->name('profile.updateInfo');
+    Route::post('/profile/update-password', [UserController::class, 'updatePassword'])->name('profile.updatePassword');
+    Route::delete('/profile/delete', [UserController::class, 'destroy'])->name('profile.destroy');
 
     Route::group(['middleware' => 'role:1'], function () {
         // Routes accessible only to authenticated users with the 'admin' role
@@ -55,6 +62,7 @@ Route::group(['middleware' => ['auth', 'role:0']], function () {
 
 
         Route::resource('supply_reports', SupplyReportController::class);
+        Route::get('/supply_reports/view/{id}', [SupplyReportController::class, 'view'])->name('supply_reports.view');
         Route::get('supply_reports/{id}/download', [SupplyReportController::class, 'download'])->name('supply_reports.download');
         Route::get('get-supply-reports', [SupplyReportController::class, 'getReports'])->name('supply_reports.getReports');
 
@@ -64,6 +72,7 @@ Route::group(['middleware' => ['auth', 'role:0']], function () {
 
 
         Route::resource('equipment_reports', EquipmentReportController::class);
+        Route::get('/equipment_reports/view/{id}', [EquipmentReportController::class, 'view'])->name('equipment_reports.view');
         Route::get('equipment_reports/{id}/download', [EquipmentReportController::class, 'download'])->name('equipment_reports.download');
         Route::get('get-equipment-reports', [EquipmentReportController::class, 'getReports'])->name('equipment_reports.getReports');
 
@@ -83,11 +92,14 @@ Route::group(['middleware' => ['auth', 'role:0']], function () {
 
         // Users CRUD route Admin Only
         Route::get('/user', [UserController::class, 'index'])->name('users');
-        Route::get('/user/create', [UserController::class, 'create'])->name('users.create');
-        Route::post('/users', [UserController::class, 'store'])->name('users.store');
-        Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
-        Route::put('/users/{id}/deactivate', [UserController::class, 'deactivate'])->name('deactivate.user');
-        Route::put('/users/{id}/activate', [UserController::class, 'activate'])->name('activate.user');
+        // Route::get('/user/create', [UserController::class, 'create'])->name('users.create');
+        // Route::post('/users', [UserController::class, 'store'])->name('users.store');
+        // Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+
+
+
+
+
         // });
         // Equipments CRUD Route
         // Route::middleware(['auth'])->group(function () {

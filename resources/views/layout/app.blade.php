@@ -157,7 +157,7 @@
 
                             </ul>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
@@ -184,27 +184,43 @@
                                         <p>MANAGE ITEMS</p>
                                     </a>
                                 </li>
-                                {{-- <li class="nav-item">
-                                    <a href="{{ route('PrCategory') }}" class="nav-link">
-                                        <i class="far nav-icon"></i>
-                                        <p>MANAGE CATEGORIES</p>
+
+                            </ul>
+                        </li> --}}
+
+                        <li class="nav-item">
+                            <a href="{}" class="nav-link">
+                                <i class="nav-icon fas fa-user"></i>
+                                <p>
+                                    PROFILE
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('profile.edit') }}" class="nav-link">
+                                        <i class="fas nav-icon fa-user"></i>
+                                        <p>PROFILE SETTINGS</p>
                                     </a>
-                                </li> --}}
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                                         <i class="fas nav-icon fa-sign-out-alt"></i>
+                                            {{ __('LOGOUT ACCOUNT') }}
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            class="d-none">
+                                            @csrf
+                                        </form>
+
+                                </li>
                             </ul>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                    class="d-none">
-                                    @csrf
-                                </form>
-
-                        </li>
+                        <
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

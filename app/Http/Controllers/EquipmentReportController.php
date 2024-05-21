@@ -61,4 +61,15 @@ class EquipmentReportController extends Controller
             }
         }
     }
+    public function view($id)
+    {
+        $report = EquipmentReport::findOrFail($id);
+        $path = storage_path('app/' . $report->file_path);
+
+        if (!file_exists($path)) {
+            abort(404);
+        }
+
+        return response()->file($path);
+    }
 }

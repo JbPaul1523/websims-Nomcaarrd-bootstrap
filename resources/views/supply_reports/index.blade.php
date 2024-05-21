@@ -46,6 +46,31 @@
         </div>
     </div>
 
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this report?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <form id="deleteForm" action="" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         $(document).ready(function() {
             var table = $('#reportTable').DataTable();
@@ -61,16 +86,15 @@
                             table.row.add([
                                 report.id,
                                 report.file_name,
-                                `<a href="/supply_reports/${report.id}/download" class="btn btn-primary">
+                                `<a href="/supply_reports/view/${report.id}" class="btn btn-info" target="_blank">
+                                    <i class="fa fa-eye"></i> View
+                                </a>
+                                <a href="/supply_reports/${report.id}/download" class="btn btn-primary">
                                     <i class="fa fa-download"></i> Download
                                 </a>
-                                <form action="/supply_reports/${report.id}" method="POST" style="display:inline;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">
-                                        <i class="fa fa-trash"></i> Delete
-                                    </button>
-                                </form>`
+                                <button class="btn btn-danger" onclick="confirmDelete(${report.id})">
+                                    <i class="fa fa-trash"></i> Delete
+                                </button>`
                             ]).draw(false);
                         });
                     }
@@ -91,5 +115,11 @@
                 loadReports(period);
             }, 5000); // Refresh every 5 seconds
         });
+
+        function confirmDelete(id) {
+            var url = '/supply_reports/' + id;
+            $('#deleteForm').attr('action', url);
+            $('#deleteModal').modal('show');
+        }
     </script>
 @endsection

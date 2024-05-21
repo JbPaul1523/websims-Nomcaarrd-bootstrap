@@ -68,6 +68,8 @@ class EquipmentController extends Controller
     public function show($id)
     {
         $equipment = Equipment::findOrFail($id);
+        $employees = Employee::all();
+        $categories = Category::all();
 
         return view('items.equipment.show', compact('equipment'));
     }

@@ -2,69 +2,108 @@
 
 namespace App\Console\Commands\supply;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Assets;
-use App\Models\SupplyReport; // Include the SupplyReport model
-use Illuminate\Console\Command; // Include the SupplyReport model
+use App\Models\SupplyReport;
+use Illuminate\Console\Command;
 
 class AnnualReport extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
     protected $signature = 'generate:supply-annual-report';
+    protected $description = 'Generate the annual supply report';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Command description';
-
-    /**
-     * Execute the console command.
-     *
-     * @return void
-     */
     public function handle(): void
     {
         $startDate = now()->startOfYear();
         $endDate = now()->endOfYear();
-        $suppliesReport = Assets::all();
+        $suppliesReport = Assets::whereBetween('created_at', [$startDate, $endDate])->get();
         $timeStamp = now()->timestamp;
 
         $htmlContent = '
-        <div>
-        <p style="font-size:1.25rem; font-weight: 700"> NOMCAARRD Supplies Report as of '. $timeStamp .'
-        </div>
-            <div style="width: 100%;">
-                        <table border="1" style="border-collapse: collapse; width:100%">
-                    <thead>
-                        <tr align="left">
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Amount</th>
-                            <th>Stock</th>
-                            <th>Date Acquired</th>
-                        </tr>
-                    </thead>
-                    <tbody>';
-                        foreach ($suppliesReport as $supply){
-                           $htmlContent .= '<tr>
-                                <td>' .  $supply->id  . '</td>
-                                <td>' .  $supply->name . '</td>
-                                <td>' .  $supply->description . '</td>
-                                <td>' .  $supply->amount . '</td>
-                                <td>' .  $supply->stock . '</td>
-                                <td>' .  $supply->date_acquired . '</td>
+        <div style="width: 100%; font-family: Arial, Helvetica, sans-serif">
+            <div style="margin: auto; display: flex; justify-content:center; align-items:center">
+                <div>
+                    <img src="public/icons/header_logo.png" alt="" srcset=""
+                        style="width: 8rem; height: 8rem;">
+                </div>
+                <div style="width: 600px">
+                    <span style="font-size: 1.15rem">REPUBLIC OF THE PHILIPPINES</span>
+                    <br>
+                    <span style="font-weight: 700; font-size: 1.15rem">Northern Mindanao Consortium for Agriculture,
+                        Aquatic and Natural
+                        Resources Research And Development (NOMCAARRD)</span>
+                    <p style="font-size: 0.9rem; padding: 0px; margin: 0px;">Central Mindanao University, University Town,
+                        Musuan, Bukidnon</p>
+                    <p style="font-size: 0.9rem; padding: 0px; margin: 0px">Email address: nomcarrdcmu@gmail.com</p>
+                    <p style="font-size: 0.9rem; padding: 0px; margin: 0px">Phone: 0917-102-7065</p>
+                </div>
+            </div>
+            <hr style="width: 80%;">
+            <div style="margin: auto; justify-content:center">
+                <p style="text-align: center; font-weight: 700; font-size: 1.15rem">ANNUAL REPORT AS OF ' . now()->format('F j, Y') . '</p>
+                <div style="margin: auto; width: 80%">
+                    <span>
+                        <i> *Note: Supplies listed below are based on this year\'s entry. If the supply you wish to see is
+                            not here, see other reports on supply report. </i>
+                    </span>
+                </div>
+                <div style="margin: auto; width: 80%">
+                    <table style="border: 1px solid black; border-collapse:collapse; width: 100%">
+                        <thead>
+                            <tr>
+                                <th style="border: 1px solid black">ID</th>
+                                <th style="border: 1px solid black">Name</th>
+                                <th style="border: 1px solid black">Description</th>
+                                <th style="border: 1px solid black">Amount</th>
+                                <th style="border: 1px solid black">Stock</th>
+                                <th style="border: 1px solid black">Date Acquired</th>
+                            </tr>
+                        </thead>
+                        <tbody>';
+
+        foreach ($suppliesReport as $supply) {
+            $htmlContent .= '
+                            <tr>
+                                <td style="border: 1px solid black">' . $supply->id . '</td>
+                                <td style="border: 1px solid black">' . $supply->name . '</td>
+                                <td style="border: 1px solid black">' . $supply->description . '</td>
+                                <td style="border: 1px solid black">' . $supply->amount . '</td>
+                                <td style="border: 1px solid black">' . $supply->stock . '</td>
+                                <td style="border: 1px solid black">' . $supply->date_acquired . '</td>
                             </tr>';
-                        }
-                $htmlContent .= '</tbody></table></div>
-        ';
+        }
+
+        $htmlContent .= '
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+                <div style="margin: auto; justify-content: center; width: 80%; display: flex;">
+                    <div style="width: 100%; margin: 10px">
+                        <span style="text-align: center">Prepared By: </span>
+                        <br>
+                        <div style="left: 0px;">
+                            <div style="text-align: center">
+                                <span style="font-weight: 700">Charlie Boquila</span>
+                                <br>
+                                <span> Inventory Officer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width: 100%; margin: 10px">
+                        <span style="text-align: center">Approved By: </span>
+                        <br>
+                        <div style="right: 0px;">
+                            <div style="text-align: center">
+                                <span style="font-weight: 700">MARIA ESTELA B. DETALLA</span>
+                                <br>
+                                <span> Consortium Director</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>';
 
         $filename = 'annual_supply_report_' . $startDate->format('Y-m-d') . '_to_' . $endDate->format('Y-m-d') . '_' . $timeStamp . '.html';
         $storagePath = 'reports/supplyreport/' . $filename;
@@ -76,6 +115,6 @@ class AnnualReport extends Command
             'file_path' => $storagePath,
         ]);
 
-        $this->info('Annual report generated successfully.');
+        $this->info('Annual supply report generated successfully.');
     }
 }
