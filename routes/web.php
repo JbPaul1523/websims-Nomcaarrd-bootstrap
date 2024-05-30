@@ -119,6 +119,10 @@ Route::group(['middleware' => ['auth', 'role:0']], function () {
         Route::put('/supply/{id}/update', [AssetsController::class, 'update'])->name('supply.update');
         Route::get('/supply/{id}/update', [AssetsController::class, 'edit'])->name('supply.edit');
         Route::delete('/supply/{id}', [AssetsController::class, 'destroy'])->name('supply.destroy');
+        Route::get('/assets/deduct-form/{id}', [AssetsController::class, 'getDeductForm'])->name('assets.deduct-form');
+        Route::post('/assets/deduct/{id}', [AssetsController::class, 'deduct'])->name('assets.deduct');
+        Route::get('/assets/{id}', [AssetsController::class, 'show'])->name('assets.show');
+
 
         Route::get('/category', [CategoryController::class, 'index'])->name('categories');
         Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');

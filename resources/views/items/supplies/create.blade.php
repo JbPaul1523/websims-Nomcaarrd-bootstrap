@@ -1,4 +1,4 @@
-<div class="modal fade" id="addSupplyModal" tabindex="-1" aria-labelledby="addSupplyModalLabel" aria-hidden="true">
+<div class="modal fade" id="addAssetModal" tabindex="-1" aria-labelledby="addSupplyModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">

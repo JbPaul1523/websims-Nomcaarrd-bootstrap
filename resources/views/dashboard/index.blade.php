@@ -80,34 +80,34 @@
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script>
-            const data = @json(array_values($monthlyData));
+        {{-- <script>
+            // const data = @json(array_values($monthlyData));
             var ctx = document.getElementById('myChart').getContext('2d');
             var label = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEPT', 'OCT', 'NOV', 'DEC'];
-            var myChart = new Chart(ctx, {
-                type: 'bar', // Specify the chart type
-                data: {
-                    labels: label,
-                    datasets: [{
-                        data: data,
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    maintainAspectRatio: true,
-                    aspectRatio: 2, // Width/Height ratio (e.g., 2 means width is twice the height)
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            display: false // Turn off the legend
-                        }
-                    },
-                }
-            });
+            // var myChart = new Chart(ctx, {
+            //     type: 'bar', // Specify the chart type
+            //     data: {
+            //         labels: label,
+            //         datasets: [{
+            //             data: data,
+            //             borderWidth: 1
+            //         }]
+            //     },
+            //     options: {
+            //         maintainAspectRatio: true,
+            //         aspectRatio: 2, // Width/Height ratio (e.g., 2 means width is twice the height)
+            //         scales: {
+            //             y: {
+            //                 beginAtZero: true
+            //             }
+            //         },
+            //         plugins: {
+            //             legend: {
+            //                 display: false // Turn off the legend
+            //             }
+            //         },
+            //     }
+            // });
 
             var ctx2 = document.getElementById('myChart2').getContext('2d');
             var myChart2 = new Chart(ctx2, {
@@ -136,6 +136,6 @@
                     },
                 }
             });
-        </script>
+        </script> --}}
 
     @endsection

@@ -1,4 +1,5 @@
 <?php
+// app/Models/Assets.php
 
 namespace App\Models;
 
@@ -16,4 +17,9 @@ class Assets extends Model
         'stock',
         'date_acquired',
     ];
+
+    public function deductions()
+    {
+        return $this->hasMany(AssetDeduction::class, 'asset_id');
+    }
 }

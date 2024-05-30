@@ -39,16 +39,16 @@ class HomeController extends Controller
 
         //dd($year);
 
-        $data = PurchaseReport::selectRaw('MONTH(created_at) as month, COUNT(*) as count')
-            ->whereYear('created_at', $year)
-            ->groupByRaw('MONTH(created_at)')
-            ->get();
+        // $data = PurchaseReport::selectRaw('MONTH(created_at) as month, COUNT(*) as count')
+        //     ->whereYear('created_at', $year)
+        //     ->groupByRaw('MONTH(created_at)')
+        //     ->get();
 
-        // Ensure all months are included with count 0 if no entries exist for that month
-        $monthlyData = array_fill(1, 12, 0);
-        foreach ($data as $entry) {
-            $monthlyData[$entry->month] = $entry->count;
-        }
+        // // Ensure all months are included with count 0 if no entries exist for that month
+        // $monthlyData = array_fill(1, 12, 0);
+        // foreach ($data as $entry) {
+        //     $monthlyData[$entry->month] = $entry->count;
+        // }
 
         $employee = Employee::withCount('equipments')->get();
 
@@ -63,9 +63,9 @@ class HomeController extends Controller
             'equipmentCount',
             'categoryCount',
             'supplyCount',
-            'monthlyData',
-            'label',
-            'values'
+            // 'monthlyData',
+            // 'label',
+            // 'values'
         ));
     }
 }
