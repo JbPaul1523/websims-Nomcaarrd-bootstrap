@@ -62,6 +62,7 @@ Route::group(['middleware' => ['auth', 'role:0']], function () {
 
 
         Route::resource('supply_reports', SupplyReportController::class);
+        Route::post('supply_reports/filter', [SupplyReportController::class, 'filter'])->name('supply.filter');
         Route::get('/supply_reports/view/{id}', [SupplyReportController::class, 'view'])->name('supply_reports.view');
         Route::get('supply_reports/{id}/download', [SupplyReportController::class, 'download'])->name('supply_reports.download');
         Route::get('get-supply-reports', [SupplyReportController::class, 'getReports'])->name('supply_reports.getReports');
@@ -72,6 +73,7 @@ Route::group(['middleware' => ['auth', 'role:0']], function () {
 
 
         Route::resource('equipment_reports', EquipmentReportController::class);
+        Route::post('equipment_reports/filter', [EquipmentReportController::class, 'filter'])->name('equipments.filter');
         Route::get('/equipment_reports/view/{id}', [EquipmentReportController::class, 'view'])->name('equipment_reports.view');
         Route::get('equipment_reports/{id}/download', [EquipmentReportController::class, 'download'])->name('equipment_reports.download');
         Route::get('get-equipment-reports', [EquipmentReportController::class, 'getReports'])->name('equipment_reports.getReports');

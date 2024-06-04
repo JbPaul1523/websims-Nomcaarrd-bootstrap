@@ -82,7 +82,7 @@
 
                         {{-- This navigation area for Items --}}
                         <li class="nav-item">
-                            <a href="{}" class="nav-link">
+                            <a href="{{''}}" class="nav-link">
                                 <i class="nav-icon fas fa-user"></i>
                                 <p>
                                     USER MANAGEMENT
@@ -189,7 +189,7 @@
                         </li> --}}
 
                         <li class="nav-item">
-                            <a href="{}" class="nav-link">
+                            <a href="{{''}}" class="nav-link">
                                 <i class="nav-icon fas fa-user"></i>
                                 <p>
                                     PROFILE
